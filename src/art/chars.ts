@@ -10,8 +10,10 @@ import laptopB from '../assets/char/laptop-b.webp';
 import laptop from '../assets/char/laptop.webp';
 import micB from '../assets/char/mic-b.webp';
 import mic from '../assets/char/mic.webp';
-import pilotB from '../assets/char/pilot-b.webp';
-import pilot from '../assets/char/pilot.webp';
+import pilotBBody from '../assets/char/pilot-b-body.webp';
+import pilotBDrone from '../assets/char/pilot-b-drone.webp';
+import pilotBody from '../assets/char/pilot-body.webp';
+import pilotDrone from '../assets/char/pilot-drone.webp';
 import point from '../assets/char/point.webp';
 import sceneImg from '../assets/char/scene.webp';
 import sit from '../assets/char/sit.webp';
@@ -32,12 +34,10 @@ const list: Record<string, [string, number, number]> = {
   minidrone: [drone, 520, 224],
   'rk-p-sit': [sit, 385, 560],
   'rk-p-point': [point, 391, 560],
-  'rk-p-lookup': [pilotB, 417, 560],
   'rk-p-wave': [waveB, 329, 560],
   'pose-wave': [wave, 293, 560],
   'pose-toga': [toga, 313, 560],
   'pose-toga-b': [togaB, 351, 560],
-  'pose-drone': [pilot, 376, 560],
   'pose-mic': [mic, 314, 560],
   'pose-mic-b': [micB, 362, 560],
   'pose-helmet': [helmet, 302, 560],
@@ -50,11 +50,24 @@ const list: Record<string, [string, number, number]> = {
   'pose-yeay-b': [yeayB, 338, 560],
 };
 
-const chars = Object.entries(list)
-  .map(
-    ([id, [url, w, h]]) =>
-      `<symbol id="${id}" viewBox="0 0 ${w} ${h}"><image href="${url}" width="${w}" height="${h}"></image></symbol>`,
-  )
-  .join('\n');
+const single = Object.entries(list).map(
+  ([id, [url, w, h]]) =>
+    `<symbol id="${id}" viewBox="0 0 ${w} ${h}"><image href="${url}" width="${w}" height="${h}"></image></symbol>`,
+);
+
+// Pilot drone: karakter & drone dipisah, drone terbang sendiri (.a-fly).
+// Koordinat = posisi masing-masing potongan di gambar aslinya.
+type Part = [string, number, number, number, number];
+const pilotSym = (id: string, w: number, h: number, body: Part, drone: Part) => {
+  const img = ([url, x, y, pw, ph]: Part) =>
+    `<image href="${url}" x="${x}" y="${y}" width="${pw}" height="${ph}"></image>`;
+  return `<symbol id="${id}" viewBox="0 0 ${w} ${h}" overflow="visible">${img(body)}<g class="a-fly">${img(drone)}</g></symbol>`;
+};
+
+const chars = [
+  ...single,
+  pilotSym('rk-p-lookup', 521, 700, [pilotBBody, 2, 26, 311, 672], [pilotBDrone, 225, 2, 294, 178]),
+  pilotSym('pose-drone', 473, 704, [pilotBody, 1, 13, 297, 689], [pilotDrone, 211, 2, 260, 178]),
+].join('\n');
 
 export default chars;

@@ -486,6 +486,27 @@ use.char {
 .a-hover {
   animation: a-hover 2.2s ease-in-out infinite;
 }
+/* drone milik karakter pilot (di dalam simbol berskala besar → amplitudo lebih besar) */
+.a-fly {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: a-fly 2.6s ease-in-out infinite;
+}
+@keyframes a-fly {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(16px, -26px) rotate(4deg);
+  }
+  50% {
+    transform: translate(4px, -10px) rotate(-1deg);
+  }
+  75% {
+    transform: translate(-14px, -20px) rotate(-4deg);
+  }
+}
 .a-drift {
   animation: a-drift 14s ease-in-out infinite;
 }
