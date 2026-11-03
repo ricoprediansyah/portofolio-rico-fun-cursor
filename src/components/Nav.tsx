@@ -8,7 +8,7 @@ function Logo({ build }: { build?: boolean }) {
       <span className="logo-face" style={{ background: C.yellow }}>
         <Use id="head" w={54} h={58} />
       </span>
-      <span className="logo-text">ricoo...</span>
+      <span className="logo-text">ricoo!</span>
     </a>
   );
 }

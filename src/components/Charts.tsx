@@ -23,7 +23,8 @@ function SkillRadar() {
   const tipFont = phone ? 30 : 12.5;
   const cx = 180;
   const cy = 150;
-  const R = phone ? 128 : 104;
+  // Di HP label ditaruh di atas/bawah titik sudut (bukan di samping), jadi grafiknya bisa jauh lebih besar.
+  const R = phone ? 150 : 104;
   const n = skillMap.length;
   const angle = (i: number) => -Math.PI / 2 + (i * 2 * Math.PI) / n;
   const pt = (i: number, f: number): [number, number] => [cx + Math.cos(angle(i)) * R * f, cy + Math.sin(angle(i)) * R * f];
@@ -33,10 +34,10 @@ function SkillRadar() {
   return (
     <div className="chart-box">
       <svg
-        viewBox={phone ? '-62 -30 484 360' : '0 0 360 300'}
+        viewBox={phone ? '-10 -54 380 408' : '0 0 360 300'}
         className="radar"
         role="img"
-        aria-label={`Peta skill: ${skillMap.map((s) => `${s.label} ${s.value}%`).join(', ')}`}
+        aria-label={`Statistik skill: ${skillMap.map((s) => `${s.label} ${s.value}%`).join(', ')}`}
       >
         {/* grid: cincin & jari-jari, dibuat redup */}
         {[0.25, 0.5, 0.75, 1].map((f) => (
@@ -50,11 +51,23 @@ function SkillRadar() {
         <polygon points={shape} className="radar-shape" />
         {skillMap.map((s, i) => {
           const [x, y] = pt(i, s.value / 100);
-          const [lx, ly] = pt(i, phone ? 1.17 : 1.2);
-          const anchor = Math.abs(lx - cx) < 4 ? 'middle' : lx > cx ? 'start' : 'end';
+          let lx: number;
+          let ly: number;
+          let anchor: 'middle' | 'start' | 'end';
+          if (phone) {
+            // label tepat di atas (sudut atas) atau di bawah (sudut bawah) titik terluar
+            const [vx, vy] = pt(i, 1);
+            lx = vx;
+            ly = Math.sin(angle(i)) < 0 ? vy - 18 : vy + 44;
+            anchor = 'middle';
+          } else {
+            [lx, ly] = pt(i, 1.2);
+            ly += 5;
+            anchor = Math.abs(lx - cx) < 4 ? 'middle' : lx > cx ? 'start' : 'end';
+          }
           return (
             <g key={s.label}>
-              <text x={lx} y={ly + (phone ? 10 : 5)} textAnchor={anchor} className="radar-label">
+              <text x={lx} y={ly} textAnchor={anchor} className="radar-label">
                 {phone && 'short' in s && s.short ? s.short : s.label}
               </text>
               <circle cx={x} cy={y} r={hot === i ? 8 : 6.5} className="radar-dot" />
@@ -80,7 +93,7 @@ function SkillRadar() {
             const label = `${skillMap[hot].label} · ${skillMap[hot].value}%`;
             const w = label.length * tipFont * 0.58 + tipFont * 1.4;
             const h = tipFont * 2.1;
-            const [minX, maxX] = phone ? [-60, 420] : [4, 356];
+            const [minX, maxX] = phone ? [-8, 368] : [4, 356];
             const tx = Math.min(Math.max(x - w / 2, minX), maxX - w);
             const ty = y > cy ? y + tipFont * 1.1 : y - h - tipFont * 1.1;
             return (
@@ -181,11 +194,11 @@ export function Overview() {
     <section id="sekilas" className="band overview" aria-label="Sekilas tentang Rico">
       <div className="wrap overview-wrap">
         <div className="card overview-card" data-build="box">
-          <h3>Peta skill</h3>
-          <p>Memetakan perkiraan seberapa tinggi skill yang dimiliki.</p>
+          <h3>Statistik skill</h3>
+          <p>Memetakan perkiraan seberapa tinggi statistik skill abang2an ini.</p>
           <SkillRadar />
           <table className="sr-only">
-            <caption>Peta skill</caption>
+            <caption>Statistik skill</caption>
             <tbody>
               {skillMap.map((s) => (
                 <tr key={s.label}>
