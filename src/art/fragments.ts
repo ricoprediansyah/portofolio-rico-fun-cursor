@@ -31,13 +31,13 @@ export const droneHero = `
 <use href="#cloud" x="20" y="30" width="80" height="40"></use>
 <use href="#cloud" x="290" y="130" width="70" height="35"></use>
 <use href="#star" x="200" y="20" width="24" height="24"></use>
-<path d="M0 212 Q200 182 400 210 L400 240 L0 240 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
+<path class="land" d="M-1600 212 L0 212 Q200 182 400 210 L2000 210 L2000 1800 L-1600 1800 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
 <use href="#bush" x="300" y="196" width="100" height="50"></use>
 <use class="char" href="#rk-p-lookup" x="110" y="14" width="170" height="228"></use>
 `;
 
 export const dronila = `
-<path d="M0 178 Q150 160 300 176 L300 200 L0 200 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
+<path class="land" d="M-1600 178 L0 178 Q150 160 300 176 L1900 176 L1900 1800 L-1600 1800 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
 <path d="M208 46 L164 166 L276 166 L232 46 Z" fill="#FFFFFF" opacity="0.45" stroke="#1B1B1B" stroke-width="2" stroke-dasharray="6 5" stroke-linejoin="round"></path>
 <use href="#palm" x="166" y="92" width="62" height="86"></use>
 <use href="#palm" x="224" y="106" width="52" height="72"></use>
@@ -47,7 +47,7 @@ export const dronila = `
 `;
 
 export const rubus = `
-<path d="M0 178 Q150 160 300 176 L300 200 L0 200 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
+<path class="land" d="M-1600 178 L0 178 Q150 160 300 176 L1900 176 L1900 1800 L-1600 1800 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
 <rect x="196" y="56" width="10" height="118" fill="#B9C2CC" stroke="#1B1B1B" stroke-width="3"></rect>
 <path d="M160 50 L250 30 L262 54 L172 74 Z" fill="#3B82D9" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
 <path d="M190 44 L202 68 M220 37 L232 61 M166 62 L256 42" stroke="#BFE8FF" stroke-width="2"></path>
@@ -60,7 +60,7 @@ export const rubus = `
 `;
 
 export const udang = `
-<path d="M0 178 Q150 160 300 176 L300 200 L0 200 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
+<path class="land" d="M-1600 178 L0 178 Q150 160 300 176 L1900 176 L1900 1800 L-1600 1800 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
 <ellipse cx="214" cy="150" rx="82" ry="30" fill="#8FE0D8" stroke="#1B1B1B" stroke-width="3"></ellipse>
 <path d="M160 146 Q170 140 180 146 M232 158 Q242 152 252 158 M196 136 Q204 131 212 136" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path>
 <path d="M234 98 Q264 88 268 112 Q268 130 248 132 L246 122 Q258 120 258 110 Q254 100 238 106 Z" fill="#F4A73E" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>

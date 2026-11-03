@@ -363,13 +363,13 @@ use.char {
     transform: translateY(0) scale(1.18, 0.8);
   }
   40% {
-    transform: translateY(-22%) scale(0.92, 1.1) rotate(-4deg);
+    transform: translateY(var(--jump, -22%)) scale(0.92, 1.1) rotate(-4deg);
   }
   60% {
     transform: translateY(0) scale(1.1, 0.9) rotate(3deg);
   }
   78% {
-    transform: translateY(-5%) scale(0.98, 1.03);
+    transform: translateY(var(--jump2, -5%)) scale(0.98, 1.03);
   }
   100% {
     transform: translateY(0) scale(1, 1);
@@ -1334,6 +1334,24 @@ svg [class*='a-'] {
 .kreatif-art {
   transform-origin: 50% 90%;
 }
+/* Bab 3: tanah di ilustrasi memanjang ke samping & ke bawah sampai tepi kartu;
+   kartu yang memotongnya (sudut ikut membulat), teks berdiri di atas rumput. */
+.land-card {
+  overflow: hidden;
+}
+.land-card .fluid-art {
+  overflow: visible;
+}
+.land-card > :not(.fluid-art) {
+  position: relative;
+  z-index: 1;
+}
+/* karakter di dalam kartu ini lompatnya lebih rendah supaya kepalanya tidak terpotong tepi kartu */
+.land-card use.char {
+  --jump: -9%;
+  --jump2: -3%;
+}
+
 @keyframes card-sway {
   0%,
   100% {

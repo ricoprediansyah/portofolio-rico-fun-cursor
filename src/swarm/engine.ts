@@ -76,7 +76,9 @@ const CURSOR_SVG =
   '<path d="M3 2 L3 20.5 L8 16 L11.6 24 L15 22.5 L11.4 14.8 L18 14.8 Z" fill="var(--c)" stroke="#1B1B1B" stroke-width="2" stroke-linejoin="round"/>' +
   '</svg>';
 
-const FAILSAFE_MS = 4500;
+const FAILSAFE_MS = 7000;
+/** Pengali durasi semua gerakan kursor (lebih besar = lebih pelan, lebih terasa). */
+const PACE = 1.4;
 const SLEEP_AFTER_MS = 2600;
 
 const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
@@ -291,7 +293,7 @@ export class SwarmEngine {
     });
 
     const pending = this.queue.reduce((n, j) => n + (j.taken ? 0 : 1), 0);
-    const speed = 1 + Math.min(pending, 10) * 0.14;
+    const speed = 1 + Math.min(pending, 10) * 0.08;
 
     let busy = pending > 0;
     for (const a of this.agents) {
@@ -364,7 +366,7 @@ export class SwarmEngine {
     const r = job.el.getBoundingClientRect();
     const [tx, ty] = this.entryPoint(job.kind, r);
     const dist = Math.hypot(tx - a.x, ty - a.y);
-    a.dur = clamp(dist * 0.9, 220, 760) / speed;
+    a.dur = (clamp(dist * 0.9, 220, 760) * PACE) / speed;
     a.bend = (Math.random() - 0.5) * Math.min(dist * 0.5, 160);
     a.node.classList.add('is-active');
   }
@@ -376,7 +378,7 @@ export class SwarmEngine {
     a.revealed = false;
 
     if (job.kind === 'box') {
-      a.dur = clamp(260 + (r.width + r.height) * 0.3, 320, 850) / speed;
+      a.dur = (clamp(260 + (r.width + r.height) * 0.3, 320, 850) * PACE) / speed;
       a.box.style.width = '0px';
       a.box.style.height = '0px';
       a.box.style.transform = `translate3d(${r.left}px, ${r.top}px, 0)`;
@@ -389,7 +391,7 @@ export class SwarmEngine {
       a.lines = Math.max(1, Math.round(r.height / lh));
       a.lh = r.height / a.lines;
       const len = (job.el.textContent || '').trim().length;
-      a.dur = clamp(len * 16, 280, 1300) / speed;
+      a.dur = (clamp(len * 16, 280, 1300) * PACE) / speed;
       job.el.style.clipPath = 'inset(0 100% 100% 0)';
       job.el.classList.add('is-building');
       a.box.style.width = '3px';
@@ -397,7 +399,7 @@ export class SwarmEngine {
       a.box.style.transform = `translate3d(${r.left}px, ${r.top}px, 0)`;
       a.box.className = 'swarm-caret is-on';
     } else {
-      a.dur = 320 / speed;
+      a.dur = (320 * PACE) / speed;
       a.node.classList.add('is-click');
       this.ripple(r.left + r.width / 2, r.top + r.height / 2, a.color);
     }
@@ -463,7 +465,7 @@ export class SwarmEngine {
     a.job = null;
     a.phase = 'rest';
     a.t0 = now;
-    a.dur = 90;
+    a.dur = 160;
   }
 
   private wander(a: Agent, now: number) {

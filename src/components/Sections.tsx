@@ -411,7 +411,7 @@ export function Drone() {
         </Head>
 
         <div className="grid grid-drone">
-          <div className="card lift drone-hero" style={{ background: C.teal }} data-build="box">
+          <div className="card lift drone-hero land-card" style={{ background: C.teal }} data-build="box">
             <Art html={art.droneHero} viewBox="0 0 400 240" label="Rico menerbangkan drone" className="fluid-art" build="box" />
             <div className="stack-12">
               <span className="chip" data-build="pop">Unila Robotika · Fixed Wing</span>
@@ -442,7 +442,7 @@ export function Drone() {
 
         <div className="grid grid-3 grid-mini">
           {droneMini.map((d) => (
-            <div key={d.title} className={`card lift ${d.tilt} mini-card`} style={{ background: d.bg }} data-build="box">
+            <div key={d.title} className={`card lift ${d.tilt} mini-card land-card`} style={{ background: d.bg }} data-build="box">
               <Art html={d.art} viewBox="0 0 300 200" label={d.label} className="fluid-art" build="box" />
               <div className="strong-sm" data-build="text">{d.title}</div>
             </div>
