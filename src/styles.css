@@ -1180,19 +1180,17 @@ svg [class*='a-'] {
   transition: translate 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
 }
 
-/* Bab 1: tiap kartu punya efek hover sendiri (uji coba) */
+/* Bab 1: efek hover kartu */
 .kampus-card {
   transition:
     box-shadow 0.3s cubic-bezier(0.3, 1.6, 0.5, 1),
-    transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1),
-    scale 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+    transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
 }
-.kampus-card::before,
-.kampus-card::after {
+.kampus-card::before {
   pointer-events: none;
 }
 
-/* 1. IPK — miring 3D mengikuti kursor + kilau */
+/* miring 3D mengikuti kursor (IPK, UNESCO, Asisten Lab) */
 .fx-tilt {
   --rx: 0deg;
   --ry: 0deg;
@@ -1201,17 +1199,8 @@ svg [class*='a-'] {
     box-shadow 0.3s ease,
     transform 0.18s ease-out;
 }
-.fx-tilt::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.6), transparent 55%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
 
-/* 2. 3,48 tahun — ngebut: kartu condong ke depan + garis kecepatan */
+/* 3,48 tahun — ngebut: kartu condong ke depan + garis kecepatan */
 .fx-dash::before {
   content: '';
   position: absolute;
@@ -1231,31 +1220,9 @@ svg [class*='a-'] {
     transform 0.3s;
 }
 
-/* 3. UNESCO optik — sapuan cahaya pelangi */
-.fx-shine::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-      110deg,
-      transparent 38%,
-      rgba(255, 255, 255, 0.8) 46%,
-      rgba(255, 236, 140, 0.55) 50%,
-      rgba(140, 210, 255, 0.55) 54%,
-      transparent 62%
-    )
-    no-repeat;
-  background-size: 250% 100%;
-  background-position: 130% 0;
-}
-
 @media (hover: hover) {
   .fx-tilt:hover {
     box-shadow: 0 12px 0 var(--ink);
-  }
-  .fx-tilt:hover::after {
-    opacity: 1;
   }
 
   .fx-dash:hover {
@@ -1270,29 +1237,10 @@ svg [class*='a-'] {
   .fx-dash:hover .kampus-pose {
     translate: 14px 0;
   }
-
-  .fx-shine:hover {
-    scale: 1.03;
-    box-shadow: 0 11px 0 var(--ink);
-  }
-  .fx-shine:hover::after {
-    animation: shine-sweep 2s ease-in-out infinite;
-  }
-
-  .fx-jelly:hover {
-    animation: jelly 0.8s ease both;
-    box-shadow: 0 11px 0 var(--ink);
-  }
 }
-/* di HP: efeknya muncul saat kartu disentuh */
+/* di HP: efek ngebut muncul saat kartu disentuh */
 .fx-dash:active .kampus-pose {
   translate: 14px 0;
-}
-.fx-shine:active::after {
-  animation: shine-sweep 2s ease-in-out infinite;
-}
-.fx-jelly:active {
-  animation: jelly 0.8s ease both;
 }
 
 @keyframes dash-lines {
@@ -1307,36 +1255,6 @@ svg [class*='a-'] {
   100% {
     translate: 0 0;
     opacity: 1;
-  }
-}
-@keyframes shine-sweep {
-  0% {
-    background-position: 130% 0;
-  }
-  55%,
-  100% {
-    background-position: -30% 0;
-  }
-}
-/* 4. Asisten lab — kenyal seperti jeli */
-@keyframes jelly {
-  0% {
-    scale: 1 1;
-  }
-  30% {
-    scale: 1.08 0.92;
-  }
-  45% {
-    scale: 0.94 1.06;
-  }
-  60% {
-    scale: 1.04 0.97;
-  }
-  75% {
-    scale: 0.99 1.01;
-  }
-  100% {
-    scale: 1.02 1.02;
   }
 }
 

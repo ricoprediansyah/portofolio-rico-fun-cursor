@@ -85,8 +85,8 @@ export const timeSplit = [
 export const kampus = [
   { pose: 'pose-toga', label: 'Rico wisuda memegang ijazah', bg: C.yellow, tilt: '', fx: 'fx-tilt', big: 'IPK 3.81/4.00', small: 'Lulus Cumlaude' },
   { pose: 'rk-p-point', label: 'Rico melangkah cepat', bg: C.peach, tilt: 'tilt-r', fx: 'fx-dash', big: '3,48', unit: 'Tahun', small: 'masa studi' },
-  { pose: 'rk-p-sit', label: 'Rico duduk belajar dengan tablet', bg: C.teal, tilt: '', fx: 'fx-shine', title: 'UNESCO Summer Course', small: 'Modern Optics — serat optik, fotonika, sel surya (2023)' },
-  { pose: 'pose-helmet', label: 'Rico dengan helm dan kunci pas', bg: C.green, tilt: 'tilt-l', fx: 'fx-jelly', title: 'Asisten Lab Telekomunikasi', small: 'Membimbing praktikum sistem komunikasi, MATLAB & Cisco' },
+  { pose: 'rk-p-sit', label: 'Rico duduk belajar dengan tablet', bg: C.teal, tilt: '', fx: 'fx-tilt', title: 'UNESCO Summer Course', small: 'Modern Optics — serat optik, fotonika, sel surya (2023)' },
+  { pose: 'pose-helmet', label: 'Rico dengan helm dan kunci pas', bg: C.green, tilt: 'tilt-l', fx: 'fx-tilt', title: 'Asisten Lab Telekomunikasi', small: 'Membimbing praktikum sistem komunikasi, MATLAB & Cisco' },
 ];
 
 export const jobs = [

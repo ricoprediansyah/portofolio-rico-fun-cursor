@@ -138,7 +138,7 @@ export function Marquee() {
 
 /* ------------------------------------------------------------- bab 1 kampus */
 
-/** Kartu fx-tilt: miring 3D mengikuti posisi kursor + kilau mengikuti kursor. */
+/** Kartu fx-tilt: miring 3D mengikuti posisi kursor. */
 function tiltMove(e: RPointerEvent<HTMLDivElement>) {
   if (e.pointerType !== 'mouse') return;
   const el = e.currentTarget;
@@ -147,8 +147,6 @@ function tiltMove(e: RPointerEvent<HTMLDivElement>) {
   const py = (e.clientY - r.top) / r.height;
   el.style.setProperty('--ry', `${(px - 0.5) * 16}deg`);
   el.style.setProperty('--rx', `${(0.5 - py) * 12}deg`);
-  el.style.setProperty('--gx', `${px * 100}%`);
-  el.style.setProperty('--gy', `${py * 100}%`);
 }
 function tiltLeave(e: RPointerEvent<HTMLDivElement>) {
   const s = e.currentTarget.style;
