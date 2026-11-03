@@ -181,17 +181,17 @@ export function Kampus() {
               onPointerMove={k.fx === 'fx-tilt' ? tiltMove : undefined}
               onPointerLeave={k.fx === 'fx-tilt' ? tiltLeave : undefined}
             >
-              <Use id={k.pose} label={k.label} className="kampus-pose" />
+              <Use id={k.pose} label={k.label} className="kampus-pose" build="pop" />
               <div>
                 {k.big ? (
-                  <div className="num">
+                  <div className="num" data-build="text">
                     {k.big}
                     {k.unit && <span className="num-unit"> {k.unit}</span>}
                   </div>
                 ) : (
-                  <div className="strong">{k.title}</div>
+                  <div className="strong" data-build="text">{k.title}</div>
                 )}
-                <div className={k.big ? '' : 'small'}>{k.small}</div>
+                <div className={k.big ? '' : 'small'} data-build="text">{k.small}</div>
               </div>
             </div>
           ))}
@@ -368,7 +368,7 @@ export function Kerja() {
               style={{ background: j.bg }}
               data-build="box"
             >
-              <Use id={j.pose} label={j.label} className="job-pose" />
+              <Use id={j.pose} label={j.label} className="job-pose" build="pop" />
               {j.bolt && <Use id="bolt" w={34} h={50} className="job-bolt a-twinkle" />}
               {j.coins && (
                 <>
@@ -381,9 +381,9 @@ export function Kerja() {
                   </span>
                 </>
               )}
-              <span className={`job-when${j.now ? ' is-now' : ''}`}>{j.when}</span>
-              <div className="job-org">{j.org}</div>
-              <div className="small">{j.role}</div>
+              <span className={`job-when${j.now ? ' is-now' : ''}`} data-build="pop">{j.when}</span>
+              <div className="job-org" data-build="text">{j.org}</div>
+              <div className="small" data-build="text">{j.role}</div>
             </li>
           ))}
         </ol>
@@ -412,30 +412,30 @@ export function Drone() {
 
         <div className="grid grid-drone">
           <div className="card lift drone-hero" style={{ background: C.teal }} data-build="box">
-            <Art html={art.droneHero} viewBox="0 0 400 240" label="Rico menerbangkan drone" className="fluid-art" />
+            <Art html={art.droneHero} viewBox="0 0 400 240" label="Rico menerbangkan drone" className="fluid-art" build="box" />
             <div className="stack-12">
-              <span className="chip">Unila Robotika · Fixed Wing</span>
-              <h3 className="h3-lg">Finalis KRTI 2024</h3>
-              <p>Spesialis Ground Control Station. Memetakan sawit, mangrove, sungai, dan pantai dengan drone.</p>
+              <span className="chip" data-build="pop">Unila Robotika · Fixed Wing</span>
+              <h3 className="h3-lg" data-build="text">Finalis KRTI 2024</h3>
+              <p data-build="text">Spesialis Ground Control Station. Memetakan sawit, mangrove, sungai, dan pantai dengan drone.</p>
             </div>
           </div>
 
           <div className="drone-side">
             <div className="card lift tilt-r side-card" style={{ background: C.green }} data-build="box">
-              <Art html={art.iconGreenhouse} viewBox="0 0 80 80" className="side-icon" />
+              <Art html={art.iconGreenhouse} viewBox="0 0 80 80" className="side-icon" build="pop" />
               <div>
-                <div className="num">20+</div>
-                <div>sensor IoT di smart greenhouse Desa Gisting &amp; Fakultas Pertanian</div>
+                <div className="num" data-build="text">20+</div>
+                <div data-build="text">sensor IoT di smart greenhouse Desa Gisting &amp; Fakultas Pertanian</div>
               </div>
-              <Use id="rk-p-sit" label="Rico memantau sensor dengan tablet" className="side-pose" />
+              <Use id="rk-p-sit" label="Rico memantau sensor dengan tablet" className="side-pose" build="pop" />
             </div>
             <div className="card lift tilt-l side-card" style={{ background: C.yellow }} data-build="box">
-              <Art html={art.iconTsunami} viewBox="0 0 80 80" className="side-icon" />
+              <Art html={art.iconTsunami} viewBox="0 0 80 80" className="side-icon" build="pop" />
               <div>
-                <div className="strong">Deteksi dini tsunami</div>
-                <div>Sistem IoT tenaga surya untuk mitigasi bencana pesisir</div>
+                <div className="strong" data-build="text">Deteksi dini tsunami</div>
+                <div data-build="text">Sistem IoT tenaga surya untuk mitigasi bencana pesisir</div>
               </div>
-              <Use id="pose-helmet-b" label="Rico teknisi dengan helm dan kunci pas" className="side-pose" />
+              <Use id="pose-helmet-b" label="Rico teknisi dengan helm dan kunci pas" className="side-pose" build="pop" />
             </div>
           </div>
         </div>
@@ -443,8 +443,8 @@ export function Drone() {
         <div className="grid grid-3 grid-mini">
           {droneMini.map((d) => (
             <div key={d.title} className={`card lift ${d.tilt} mini-card`} style={{ background: d.bg }} data-build="box">
-              <Art html={d.art} viewBox="0 0 300 200" label={d.label} className="fluid-art" />
-              <div className="strong-sm">{d.title}</div>
+              <Art html={d.art} viewBox="0 0 300 200" label={d.label} className="fluid-art" build="box" />
+              <div className="strong-sm" data-build="text">{d.title}</div>
             </div>
           ))}
         </div>
@@ -483,9 +483,9 @@ export function Kreatif() {
           <div className="grid grid-2">
             {kreatifStats.map((s) => (
               <div key={s.text} className={`card lift ${s.tilt} stat-card`} style={{ background: s.bg }} data-build="box">
-                <Use id={s.icon} w={56} h={56} className="stat-icon" />
-                <div className="num-md">{s.big}</div>
-                <div>{s.text}</div>
+                <Use id={s.icon} w={56} h={56} className="stat-icon" build="pop" />
+                <div className="num-md" data-build="text">{s.big}</div>
+                <div data-build="text">{s.text}</div>
               </div>
             ))}
           </div>
@@ -541,20 +541,20 @@ export function WebDev() {
         <div className="grid grid-3">
           {projects.map((p) => (
             <article key={p.title} className={`card lift ${p.tilt} project`} data-build="box">
-              <div className="project-screen" style={{ background: p.screen }}>
+              <div className="project-screen" style={{ background: p.screen }} data-build="box">
                 <Art html={p.art} viewBox="0 0 320 150" preserve="xMidYMid meet" label={p.label} />
               </div>
-              <div className="tags">
+              <div className="tags" data-build="box">
                 {p.tags.map((t) => (
                   <span key={t} className="tag" style={{ background: p.tagBg }}>
                     {t}
                   </span>
                 ))}
               </div>
-              <h3>{p.title}</h3>
-              <p>{p.desc}</p>
+              <h3 data-build="text">{p.title}</h3>
+              <p data-build="text">{p.desc}</p>
               {p.link && (
-                <a href={p.link} className="project-link" target="_blank" rel="noopener noreferrer">
+                <a href={p.link} className="project-link" target="_blank" rel="noopener noreferrer" data-build="pop">
                   {p.cta} <span aria-hidden="true">→</span>
                 </a>
               )}
@@ -586,10 +586,10 @@ export function Skill() {
           <div className="grid grid-2">
             {sideQuests.map((q) => (
               <div key={q.title} className={`card lift ${q.tilt} quest`} style={{ background: q.bg }} data-build="box">
-                <Use id={q.icon} w={52} h={52} className="quest-icon" />
+                <Use id={q.icon} w={52} h={52} className="quest-icon" build="pop" />
                 <div>
-                  <div className="strong">{q.title}</div>
-                  <div>{q.text}</div>
+                  <div className="strong" data-build="text">{q.title}</div>
+                  <div data-build="text">{q.text}</div>
                 </div>
               </div>
             ))}

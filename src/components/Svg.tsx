@@ -50,14 +50,17 @@ interface ArtProps {
   className?: string;
   preserve?: string;
   style?: CSSProperties;
+  /** ikut dibangun oleh kursor swarm */
+  build?: 'box' | 'text' | 'pop';
 }
 
 /** Ilustrasi inline dari fragment SVG di src/art/fragments.ts. */
-export function Art({ html, viewBox, label, className, preserve, style }: ArtProps) {
+export function Art({ html, viewBox, label, className, preserve, style, build }: ArtProps) {
   return (
     <svg
       viewBox={viewBox}
       className={className}
+      data-build={build}
       style={style}
       preserveAspectRatio={preserve}
       role={label ? 'img' : undefined}

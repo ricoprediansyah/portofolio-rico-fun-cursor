@@ -32,7 +32,7 @@ function SkillRadar() {
   const shape = skillMap.map((s, i) => pt(i, s.value / 100).join(',')).join(' ');
 
   return (
-    <div className="chart-box">
+    <div className="chart-box" data-build="box">
       <svg
         viewBox={phone ? '-10 -54 380 408' : '0 0 360 300'}
         className="radar"
@@ -133,7 +133,7 @@ function TimeDonut() {
   const cur = hot === null ? null : segs[hot];
 
   return (
-    <div className="donut-wrap">
+    <div className="donut-wrap" data-build="box">
       <svg
         viewBox="0 0 220 220"
         className="donut"
@@ -194,8 +194,8 @@ export function Overview() {
     <section id="sekilas" className="band overview" aria-label="Sekilas tentang Rico">
       <div className="wrap overview-wrap">
         <div className="card overview-card" data-build="box">
-          <h3>Statistik skill</h3>
-          <p>Memetakan perkiraan seberapa tinggi statistik skill abang2an ini.</p>
+          <h3 data-build="text">Statistik skill</h3>
+          <p data-build="text">Memetakan perkiraan seberapa tinggi statistik skill abang2an ini.</p>
           <SkillRadar />
           <table className="sr-only">
             <caption>Statistik skill</caption>
@@ -210,8 +210,8 @@ export function Overview() {
           </table>
         </div>
         <div className="card overview-card" data-build="box">
-          <h3>Ke mana waktu Rico habis?</h3>
-          <p>Perkiraan pembagian waktu, dalam persen.</p>
+          <h3 data-build="text">Ke mana waktu Rico habis?</h3>
+          <p data-build="text">Perkiraan pembagian waktu, dalam persen.</p>
           <TimeDonut />
           <table className="sr-only">
             <caption>Pembagian waktu</caption>
