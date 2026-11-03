@@ -776,22 +776,22 @@ export function Epilog() {
       <Deco id="arc" w={46} h={46} anim="a-float a-d2" style={{ top: 40, right: 280, color: C.teal }} />
 
       <div className="card epilog-card" style={{ background: C.yellow }} data-build="box">
-        <Use id="pose-yeay" label="Maskot Rico bersorak" className="epilog-pose" />
+        <Use id="pose-yeay" label="Maskot Rico bersorak" className="epilog-pose" build="pop" />
         <div className="stack-18">
-          <span className="strong-sm">EPILOG</span>
-          <h2>Ceritanya belum tamat. Ayo ngobrol!</h2>
-          <div className="cta-row left">
+          <span className="strong-sm" data-build="pop">EPILOG</span>
+          <h2 data-build="text">Ceritanya belum tamat. Ayo ngobrol!</h2>
+          <div className="cta-row left" data-build="box">
             <a href={`mailto:${links.email}`} className="btn btn-mail" style={{ background: C.orange }}>
               <MailIcon />
               {links.email}
             </a>
           </div>
-          <p>Bandar Lampung · Jakarta</p>
+          <p data-build="text">Bandar Lampung · Jakarta</p>
           <div className="socials">
-            <span className="strong-sm">Mampir juga ke sosmedku:</span>
+            <span className="strong-sm" data-build="text">Mampir juga ke sosmedku:</span>
             <ul className="social-row">
               {socials.map((s) => (
-                <li key={s.name}>
+                <li key={s.name} data-build="pop">
                   <a
                     href={s.url}
                     className="social"

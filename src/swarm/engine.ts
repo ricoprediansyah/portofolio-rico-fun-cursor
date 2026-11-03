@@ -24,6 +24,8 @@ interface Job {
   el: HTMLElement;
   kind: BuildKind;
   queuedAt: number;
+  /** waktu saat induknya sudah dibangun (0 = belum siap) */
+  readyAt: number;
   taken: boolean;
 }
 
@@ -237,7 +239,7 @@ export class SwarmEngine {
       if (e.isIntersecting) {
         if (!job) {
           const kind = (el.dataset.build as BuildKind) || 'box';
-          this.queue.push({ el, kind, queuedAt: now, taken: false });
+          this.queue.push({ el, kind, queuedAt: now, readyAt: 0, taken: false });
           changed = true;
         }
       } else if ((r.width === 0 && r.height === 0) || r.bottom < 0) {
@@ -255,6 +257,12 @@ export class SwarmEngine {
     }
   };
 
+  /** true kalau tidak ada leluhur [data-build] yang belum selesai dibangun. */
+  private ready(el: HTMLElement) {
+    const parent = el.parentElement?.closest<HTMLElement>('[data-build]');
+    return !parent || parent.classList.contains('is-built');
+  }
+
   private reveal(el: HTMLElement) {
     if (el.classList.contains('is-built')) return;
     el.style.clipPath = '';
@@ -269,8 +277,14 @@ export class SwarmEngine {
     this.dt = Math.min(0.05, (now - this.last) / 1000);
     this.last = now;
 
+    // Elemen di dalam target lain baru "siap" setelah induknya selesai dibangun;
+    // jam failsafe-nya mulai dihitung sejak siap.
+    for (const j of this.queue) {
+      if (!j.taken && !j.readyAt && this.ready(j.el)) j.readyAt = now;
+    }
+
     // Failsafe: jangan biarkan konten kosong terlalu lama kalau antrean menumpuk.
-    const stale = this.queue.filter((j) => !j.taken && now - j.queuedAt > FAILSAFE_MS);
+    const stale = this.queue.filter((j) => !j.taken && j.readyAt && now - j.readyAt > FAILSAFE_MS);
     stale.forEach((j) => {
       this.queue.splice(this.queue.indexOf(j), 1);
       this.reveal(j.el);
@@ -297,7 +311,7 @@ export class SwarmEngine {
   private step(a: Agent, now: number, speed: number) {
     switch (a.phase) {
       case 'idle': {
-        const job = this.queue.find((j) => !j.taken);
+        const job = this.queue.find((j) => !j.taken && !!j.readyAt);
         if (job) this.assign(a, job, now, speed);
         else this.wander(a, now);
         break;

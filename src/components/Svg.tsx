@@ -18,10 +18,12 @@ interface UseProps {
   label?: string;
   className?: string;
   style?: CSSProperties;
+  /** ikut dibangun oleh kursor swarm */
+  build?: 'box' | 'text' | 'pop';
 }
 
 /** Pakai satu simbol dari sprite, mis. <Use id="pose-yeay" w={120} h={170} />. */
-export function Use({ id, w, h, label, className, style }: UseProps) {
+export function Use({ id, w, h, label, className, style, build }: UseProps) {
   // karakter Rico bisa disorot (goyang) & diklik (lompat), lihat .char di styles.css
   const isChar = id.startsWith('pose-') || id.startsWith('rk-p-');
   return (
@@ -29,6 +31,7 @@ export function Use({ id, w, h, label, className, style }: UseProps) {
       width={w}
       height={h}
       className={isChar ? `${className ?? ''} char` : className}
+      data-build={build}
       style={style}
       role={label ? 'img' : undefined}
       aria-label={label}
