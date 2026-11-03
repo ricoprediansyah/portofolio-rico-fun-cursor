@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as RPointerEvent, type ReactNode, type RefObject } from 'react';
 import * as art from '../art/fragments';
 import {
   C,
@@ -138,6 +138,24 @@ export function Marquee() {
 
 /* ------------------------------------------------------------- bab 1 kampus */
 
+/** Kartu fx-tilt: miring 3D mengikuti posisi kursor + kilau mengikuti kursor. */
+function tiltMove(e: RPointerEvent<HTMLDivElement>) {
+  if (e.pointerType !== 'mouse') return;
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  const px = (e.clientX - r.left) / r.width;
+  const py = (e.clientY - r.top) / r.height;
+  el.style.setProperty('--ry', `${(px - 0.5) * 16}deg`);
+  el.style.setProperty('--rx', `${(0.5 - py) * 12}deg`);
+  el.style.setProperty('--gx', `${px * 100}%`);
+  el.style.setProperty('--gy', `${py * 100}%`);
+}
+function tiltLeave(e: RPointerEvent<HTMLDivElement>) {
+  const s = e.currentTarget.style;
+  s.setProperty('--rx', '0deg');
+  s.setProperty('--ry', '0deg');
+}
+
 export function Kampus() {
   return (
     <section id="kampus" className="band band-white">
@@ -157,7 +175,14 @@ export function Kampus() {
 
         <div className="grid grid-kampus">
           {kampus.map((k) => (
-            <div key={k.pose + k.bg} className={`card lift ${k.tilt} kampus-card`} style={{ background: k.bg }} data-build="box">
+            <div
+              key={k.pose + k.bg}
+              className={`card ${k.tilt} kampus-card ${k.fx}`}
+              style={{ background: k.bg }}
+              data-build="box"
+              onPointerMove={k.fx === 'fx-tilt' ? tiltMove : undefined}
+              onPointerLeave={k.fx === 'fx-tilt' ? tiltLeave : undefined}
+            >
               <Use id={k.pose} label={k.label} className="kampus-pose" />
               <div>
                 {k.big ? (
