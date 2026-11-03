@@ -321,6 +321,11 @@ use.char {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
+/* biar karakter yang lompat/goyang tidak terpotong bingkai SVG-nya */
+svg.char,
+svg:has(> use.char) {
+  overflow: visible;
+}
 svg.char > use,
 use.char {
   transform-box: fill-box;
