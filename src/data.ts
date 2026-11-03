@@ -135,7 +135,7 @@ export const projects = [
     desc: 'Web ekonomi sirkular singkong: mengubah limbah singkong jadi produk yang bernilai.',
     tags: ['Web', 'Ekonomi Sirkular'], tagBg: C.green, screen: '#F3E9D2',
     art: art.projCassava, label: 'Ilustrasi singkong dengan panah daur ulang',
-    link: '', cta: '', tilt: 'tilt-l',
+    link: 'https://cassavatelti.netlify.app/', cta: 'Kunjungi cassavatelti.netlify.app', tilt: 'tilt-l',
   },
   {
     title: 'Reminder',
