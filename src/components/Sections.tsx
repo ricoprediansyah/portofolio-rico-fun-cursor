@@ -282,7 +282,7 @@ export function Drone() {
             <Art html={art.droneHero} viewBox="0 0 400 240" label="Rico menerbangkan drone" className="fluid-art" />
             <div className="stack-12">
               <span className="chip">Unila Robotika · Fixed Wing</span>
-              <h3 className="h3-lg">Finalis KRTI 2024 &amp; Juara 2 divisi LELA</h3>
+              <h3 className="h3-lg">Finalis KRTI 2024</h3>
               <p>Spesialis Ground Control Station. Memetakan sawit, mangrove, sungai, dan pantai dengan drone.</p>
             </div>
           </div>
