@@ -13,10 +13,26 @@ function Logo({ build }: { build?: boolean }) {
   );
 }
 
-function Links({ active, onPick }: { active?: string; onPick?: () => void }) {
+/** Isi menu garis-tiga (HP/tablet): Kontak sudah tampil di luar menu, gantinya tombol Statistik. */
+const sheetNav = [...nav.filter((n) => n.id !== 'kontak'), { id: 'sekilas', label: 'Statistik', accent: true }];
+
+/** Tombol Kontak yang tetap terlihat di samping tombol menu (hanya mode garis-tiga). */
+function ContactPill({ active }: { active?: string }) {
+  return (
+    <a
+      href="#kontak"
+      className={`nav-pill is-accent nav-contact${active === 'kontak' ? ' is-current' : ''}`}
+      aria-current={active === 'kontak' ? 'true' : undefined}
+    >
+      Kontak
+    </a>
+  );
+}
+
+function Links({ active, onPick, items = nav }: { active?: string; onPick?: () => void; items?: typeof sheetNav }) {
   return (
     <>
-      {nav.map((n) => (
+      {items.map((n) => (
         <a
           key={n.id}
           href={`#${n.id}`}
@@ -81,10 +97,11 @@ export function HeroHeader() {
       <nav aria-label="Bab" className="nav-desktop" data-build="box">
         <Links />
       </nav>
+      <ContactPill />
       <MenuToggle open={menu.open} onToggle={menu.toggle} />
       {menu.open && (
         <nav aria-label="Bab" className="nav-sheet">
-          <Links onPick={menu.close} />
+          <Links onPick={menu.close} items={sheetNav} />
         </nav>
       )}
       <div className="hang-row" aria-hidden="true">
@@ -139,7 +156,7 @@ export function FloatingNav() {
 
   // Tandai bab yang sedang dibaca.
   useEffect(() => {
-    const els = nav.map((n) => document.getElementById(n.id)).filter(Boolean) as HTMLElement[];
+    const els = sheetNav.concat(nav.filter((n) => n.id === 'kontak')).map((n) => document.getElementById(n.id)).filter(Boolean) as HTMLElement[];
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
@@ -167,10 +184,11 @@ export function FloatingNav() {
         <nav aria-label="Bab" className="nav-desktop">
           <Links active={active} />
         </nav>
+        <ContactPill active={active} />
         <MenuToggle open={menu.open} onToggle={menu.toggle} />
         {menu.open && (
           <nav aria-label="Bab" className="nav-sheet">
-            <Links active={active} onPick={menu.close} />
+            <Links active={active} onPick={menu.close} items={sheetNav} />
           </nav>
         )}
       </div>
