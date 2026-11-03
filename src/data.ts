@@ -44,7 +44,7 @@ export const hangTags = [
   { label: 'IoT', icon: 'wifi', w: 18, h: 16, bg: C.peach, len: 26 },
   { label: 'Drone', icon: 'minidrone', w: 26, h: 13, bg: C.yellow, len: 40 },
   { label: 'AI', icon: 'chip', w: 18, h: 18, bg: C.teal, len: 20 },
-  { label: '</> Web Dev', icon: '', w: 0, h: 0, bg: C.white, len: 34, mono: true },
+  { label: '</> IT', icon: '', w: 0, h: 0, bg: C.white, len: 34, mono: true },
   { label: 'Desain', icon: 'star', w: 16, h: 16, bg: C.green, len: 24 },
   { label: 'Listrik', icon: 'bolt', w: 12, h: 18, bg: C.orange, len: 38 },
 ];
