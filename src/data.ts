@@ -62,24 +62,44 @@ export const marquee: Array<{ face: 'head' | 'head-happy'; bg: string } | { text
   { face: 'head', bg: C.peach },
 ];
 
+// Kartu "Sekilas" sebelum Bab 1. Angka = perkiraan, silakan disesuaikan (0–100).
+// Urutan peta skill = searah jarum jam mulai dari atas.
+export const skillMap = [
+  { label: 'IoT', value: 80 },
+  { label: 'Drone', value: 60 },
+  { label: 'AI/ML', value: 70 },
+  { label: 'IT', value: 55 },
+  { label: 'Desain', value: 90 },
+  { label: 'Kelistrikan', short: 'Listrik', value: 50 },
+];
+
+// Pembagian waktu (total 100%). Warna sudah divalidasi aman buta warna — urutannya jangan ditukar.
+export const timeSplit = [
+  { label: 'Edukasi', value: 30, color: '#1FA394' },
+  { label: 'Kerja / Magang', value: 30, color: '#E07B00' },
+  { label: 'Organisasi', value: 17, color: '#7C4DDB' },
+  { label: 'Penelitian', value: 14, color: '#3E9E4C' },
+  { label: 'Mengajar', value: 9, color: '#D9A400' },
+];
+
 export const kampus = [
   { pose: 'pose-toga', label: 'Rico wisuda memegang ijazah', bg: C.yellow, tilt: '', big: 'IPK 3.81/4.00', small: 'Lulus Cumlaude' },
-  { pose: 'rk-p-point', label: 'Rico melangkah cepat', bg: C.peach, tilt: 'tilt-r', big: '3,48 Tahun', small: 'masa studi' },
+  { pose: 'rk-p-point', label: 'Rico melangkah cepat', bg: C.peach, tilt: 'tilt-r', big: '3,48', unit: 'Tahun', small: 'masa studi' },
   { pose: 'rk-p-sit', label: 'Rico duduk belajar dengan tablet', bg: C.teal, tilt: '', title: 'UNESCO Summer Course', small: 'Modern Optics — serat optik, fotonika, sel surya (2023)' },
   { pose: 'pose-helmet', label: 'Rico dengan helm dan kunci pas', bg: C.green, tilt: 'tilt-l', title: 'Asisten Lab Telekomunikasi', small: 'Membimbing praktikum sistem komunikasi, MATLAB & Cisco' },
 ];
 
 export const jobs = [
-  { when: 'Mar 2025 – Feb 2026', org: 'Fana Kreatif Produksi', role: 'IT Support & Designer — Starlink, CCTV, desain brand klien', pose: 'pose-idea', label: 'Maskot Rico mendapat ide desain', bg: C.yellow, tilt: 'tilt-l' },
-  { when: 'Apr – Jun 2026', org: 'Matra Digital Group', role: 'Technician Engineer — merancang alur kerja & sistem task teknisi', pose: 'pose-helmet', label: 'Maskot Rico memperbaiki perangkat', bg: C.green, tilt: 'tilt-r' },
+  { when: 'Mar 2025 – Feb 2026', org: 'Fana Kreatif Produksi', role: 'IT Support & Designer — Starlink, elektronika, desain brand klien', pose: 'pose-idea', label: 'Maskot Rico mendapat ide desain', bg: C.yellow, tilt: 'tilt-l' },
+  { when: 'Apr – Jun 2026', org: 'Matra Digital Group', role: 'Technician Engineer — maintenance & memperbaiki alat elektronika', pose: 'pose-helmet', label: 'Maskot Rico memperbaiki perangkat', bg: C.green, tilt: 'tilt-r' },
   { when: 'Jun – Aug 2026', org: 'Byte Beyond Persona', role: 'Electrical Engineering — SLD, perencanaan listrik, smart IoT gedung', pose: 'pose-helmet', label: 'Rico sebagai teknisi listrik', bg: C.teal, tilt: 'tilt-l', bolt: true },
   { when: 'Sep 2026 – sekarang', org: 'Bank Mandiri', role: 'Officer Information Technology — ODP, kini tahap OJT', pose: 'pose-laptop', label: 'Maskot Rico bekerja dengan laptop', bg: C.orange, tilt: 'tilt-r', now: true, coins: true },
 ];
 
 export const droneMini = [
-  { art: art.dronila, label: 'Rico memetakan kebun sawit dengan drone', bg: C.peach, tilt: 'tilt-l', title: 'DRONILA — pemetaan sawit, tebu, mangrove' },
+  { art: art.dronila, label: 'Rico memetakan kebun dengan drone dan tank rover mini', bg: C.peach, tilt: 'tilt-l', title: 'DRONILA — pemetaan drone & rover' },
   { art: art.rubus, label: 'Rico memantau perangkat RUBUS bertenaga surya', bg: C.yellow, tilt: '', title: 'RUBUS — monitoring IoT & gateway surya' },
-  { art: art.udang, label: 'Rico memantau tambak udang dengan IoT', bg: C.green, tilt: 'tilt-r', title: 'Akuakultur udang & rover sawit' },
+  { art: art.udang, label: 'Rico memantau tambak udang dengan IoT', bg: C.green, tilt: 'tilt-r', title: 'Smart Tambak Udang' },
 ];
 
 export const kreatifStats = [
@@ -159,7 +179,7 @@ export const skills = [
   'AutoCAD · ETAP · Visio',
   'Python · JS · Kotlin · C++',
   'Computer Vision · ML',
-  'Figma · React',
+  'Figma · HTML · CSS',
   'Photoshop · Illustrator · Premiere',
   'Laravel · React',
 ];

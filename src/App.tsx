@@ -1,3 +1,4 @@
+import { Overview } from './components/Charts';
 import { FloatingNav } from './components/Nav';
 import { Drone, Epilog, Footer, Kampus, Kerja, Kreatif, Marquee, Peran, Prolog, Skill, WebDev } from './components/Sections';
 import { Sprites } from './components/Svg';
@@ -21,6 +22,7 @@ export default function App() {
         <WebDev />
         <Skill />
         <Peran />
+        <Overview />
         <Epilog />
       </main>
       <Footer />

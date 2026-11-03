@@ -123,6 +123,7 @@ export const dronila = `
 <use href="#palm" x="224" y="106" width="52" height="72"></use>
 <g class="a-hover"><use href="#minidrone" x="180" y="12" width="80" height="40"></use></g>
 <use href="#rk-p-point" x="26" y="36" width="96" height="160"></use>
+<g class="a-drive"><use href="#rover" x="108" y="126" width="74" height="46"></use></g>
 `;
 
 export const rubus = `

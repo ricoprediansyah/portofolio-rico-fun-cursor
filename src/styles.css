@@ -212,6 +212,10 @@ ol {
   font-size: 44px;
   line-height: 1.1;
 }
+/* satuan kecil di samping angka, mis. "3,48 Tahun" */
+.num-unit {
+  font-size: 0.6em;
+}
 .num-md {
   font-family: var(--font-display);
   font-size: 36px;
@@ -441,6 +445,19 @@ span.deco:active,
 }
 .a-march {
   animation: a-march 0.9s linear infinite;
+}
+/* rover maju-mundur pelan */
+@keyframes a-drive {
+  0%,
+  100% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(8px) translateY(-1px);
+  }
+}
+.a-drive {
+  animation: a-drive 3.6s ease-in-out infinite;
 }
 .a-d2 {
   animation-delay: -1.3s;
@@ -735,7 +752,7 @@ svg [class*='a-'] {
   line-height: 1.05;
   letter-spacing: 1px;
   color: #fff;
-  -webkit-text-stroke: 3px var(--ink);
+  -webkit-text-stroke: 4px var(--ink);
   paint-order: stroke fill;
   text-shadow: 0 6px 0 var(--ink);
 }
@@ -837,6 +854,247 @@ svg [class*='a-'] {
   }
 }
 
+/* ------------------------------------------- sekilas: peta skill & waktu */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.overview {
+  background: var(--ground);
+  /* tepat di bawah "Satu Rico" yang sudah punya garis bawah */
+  border-top: 0;
+}
+.overview-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.overview-card {
+  background: #fff;
+  padding: 26px 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.overview-card h3 {
+  font-size: 30px;
+}
+.overview-card > p {
+  font-size: 15px;
+  color: #3d3d3d;
+}
+.chart-box {
+  margin-top: 6px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.radar {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+.radar-ring {
+  fill: none;
+  stroke: #cfcfcf;
+  stroke-width: 1.4;
+}
+.radar-shape {
+  fill: rgba(31, 163, 148, 0.32);
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.radar-dot {
+  fill: var(--orange);
+  stroke: var(--ink);
+  stroke-width: 2.5;
+  transition: r 0.15s;
+}
+.radar-label {
+  font: 700 14px var(--font-body);
+  fill: var(--ink);
+}
+.hit {
+  fill: transparent;
+  cursor: pointer;
+  outline: none;
+}
+.chart-tip rect {
+  fill: var(--ink);
+}
+.chart-tip text {
+  font: 700 12.5px var(--font-body);
+  fill: #fff;
+}
+.donut-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 10px;
+}
+.donut {
+  width: 220px;
+  max-width: 55%;
+  height: auto;
+  flex-shrink: 0;
+  overflow: visible;
+}
+.donut-seg {
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  cursor: pointer;
+  outline: none;
+  transition:
+    transform 0.2s cubic-bezier(0.3, 1.6, 0.5, 1),
+    opacity 0.2s;
+}
+.donut-seg.is-dim {
+  opacity: 0.35;
+}
+.donut-edge {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  pointer-events: none;
+}
+.donut-big {
+  font: 400 30px var(--font-display);
+  fill: var(--ink);
+}
+.donut-small {
+  font: 500 11.5px var(--font-body);
+  fill: #3d3d3d;
+}
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.donut-legend li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  cursor: default;
+  transition: opacity 0.2s;
+}
+.donut-legend li.is-dim {
+  opacity: 0.4;
+}
+.swatch {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border: 2.5px solid var(--ink);
+  border-radius: 5px;
+}
+.legend-val {
+  margin-left: auto;
+  padding-left: 8px;
+  font-weight: 700;
+}
+@media (max-width: 1024px) {
+  .radar-label {
+    font-size: 17px;
+  }
+  .donut-wrap {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .donut {
+    max-width: 220px;
+    width: 70%;
+  }
+  .donut-legend {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+/* HP: dua kartu tetap berdampingan, versi mini */
+@media (max-width: 760px) {
+  .overview-wrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 28px 12px;
+  }
+  .overview-card {
+    padding: 11px 10px 10px;
+    gap: 3px;
+    border-radius: 14px;
+  }
+  .overview-card h3 {
+    font-size: 15px;
+    line-height: 1.15;
+  }
+  .overview-card > p {
+    font-size: 10.5px;
+    line-height: 1.35;
+  }
+  .chart-box {
+    margin-top: 4px;
+  }
+  /* ukuran dalam satuan SVG: grafik diperkecil ±0,35x, jadi angkanya besar */
+  .radar-label {
+    font-size: 29px;
+  }
+  .radar-ring {
+    stroke-width: 2.4;
+  }
+  .radar-shape {
+    stroke-width: 5;
+  }
+  .radar-dot {
+    stroke-width: 4;
+  }
+  .donut-wrap {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .donut {
+    width: 84%;
+    max-width: 150px;
+  }
+  .donut-small {
+    font-size: 17px;
+  }
+  .donut-legend {
+    width: 100%;
+    gap: 4px;
+  }
+  .donut-legend li {
+    font-size: 10.5px;
+    gap: 5px;
+  }
+  .swatch {
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+    border-radius: 3px;
+  }
+  .legend-val {
+    padding-left: 4px;
+  }
+}
+
 /* ------------------------------------------------------ bab 1 kampus */
 
 .grid-kampus {
@@ -862,7 +1120,7 @@ svg [class*='a-'] {
 
 .grid-jobs {
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 24px 52px;
   align-items: start;
   padding-top: 110px;
 }
@@ -914,6 +1172,44 @@ svg [class*='a-'] {
   top: 70px;
   right: auto;
   left: 16px;
+}
+
+/* timeline: tali + panah antar kartu kerja */
+.jobs-wrap {
+  position: relative;
+}
+.job-links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+.job-link {
+  transition: opacity 0.5s ease;
+}
+.swarm .job-link:not(.is-on) {
+  opacity: 0;
+}
+.job-rope {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 0.5 8;
+  animation: rope-flow 1.1s linear infinite;
+}
+@keyframes rope-flow {
+  to {
+    stroke-dashoffset: -8.5;
+  }
+}
+.job-knot {
+  fill: var(--orange);
+  stroke: var(--ink);
+  stroke-width: 2.5;
 }
 
 /* tema bank: koin berputar & hujan koin */
@@ -1383,7 +1679,25 @@ svg [class*='a-'] {
 /* ------------------------------------------------------------ epilog */
 
 .epilog {
-  padding: 140px 32px 120px;
+  padding: 140px 32px 132px;
+}
+/* padang semak & rumput selebar layar, atasnya menutupi sedikit kartu epilog */
+.epilog-band {
+  position: relative;
+}
+.meadow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200px;
+  z-index: 2;
+  pointer-events: none;
+}
+.meadow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .epilog-card {
   z-index: 1;
@@ -1464,12 +1778,16 @@ svg [class*='a-'] {
 .footer {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 24px 32px 96px;
+  padding: 12px 32px 96px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  font-weight: 500;
+  font-weight: 700;
+  /* latar hijau selebar layar, menyambung dengan padang semak */
+  background: #6cc57c;
+  box-shadow: 0 0 0 100vmax #6cc57c;
+  clip-path: inset(0 -100vmax);
 }
 
 /* ---------------------------------------------------- floating nav */
@@ -1806,6 +2124,7 @@ svg [class*='a-'] {
   .grid-jobs {
     grid-template-columns: 1fr 1fr;
     row-gap: 140px;
+    column-gap: 56px;
   }
   .job-card.is-low {
     margin-top: 0;
@@ -1885,7 +2204,7 @@ svg [class*='a-'] {
     gap: 14px;
   }
   .prolog-title {
-    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-width: 3.2px;
     text-shadow: 0 5px 0 var(--ink);
   }
   .speech {
@@ -2167,7 +2486,7 @@ svg [class*='a-'] {
   }
   .prolog-title {
     font-size: 38px;
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 2.8px;
     text-shadow: 0 4px 0 var(--ink);
   }
   .speech {
@@ -2435,8 +2754,8 @@ svg [class*='a-'] {
   /* Bab 2 — 2x2, maskot lebih kecil */
   .grid-jobs {
     grid-template-columns: 1fr 1fr;
-    column-gap: 12px;
-    row-gap: 80px;
+    column-gap: 26px;
+    row-gap: 84px;
     padding-top: 66px;
   }
   .job-card {
@@ -2645,7 +2964,13 @@ svg [class*='a-'] {
     font-size: 22px;
   }
   .epilog {
-    padding: 100px 16px 84px;
+    padding: 100px 16px 92px;
+  }
+  .epilog-card {
+    padding-bottom: 46px;
+  }
+  .meadow {
+    height: 140px;
   }
   .epilog-card h2 {
     font-size: 24px;

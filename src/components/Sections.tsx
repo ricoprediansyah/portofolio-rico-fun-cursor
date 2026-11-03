@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react';
 import * as art from '../art/fragments';
 import {
   C,
@@ -86,7 +86,7 @@ export function Prolog() {
         </h1>
         <p className="speech" data-build="box">
           <strong>Anak elektro yang banyak kesukaan.</strong> Lulusan Teknik Elektro Unila yang betah ngoprek
-          IoT, jaringan, Drone, dan AI. Sekarang Officer IT di Bank Mandiri.
+          IoT, jaringan, Drone, dan AI. <strong>Sekarang Officer IT di Bank Mandiri.</strong>
         </p>
         <div className="cta-row" data-build="box">
           <a href="#kampus" className="btn" style={{ background: C.orange }}>
@@ -151,8 +151,8 @@ export function Kampus() {
         <Deco id="star" w={30} h={30} anim="a-twinkle" style={{ top: 200, right: 340 }} />
 
         <Head label="BAB 1" color="#6B5B00" title="Kampus Unila, 3,48 tahun ngebut.">
-          Teknik Elektro, Jul 2021 – Feb 2025. Di sela kuliah: asisten lab, riset bareng dosen, dan sering jadi
-          pembicara di kampus.
+          <strong>Teknik Elektro</strong> bidang <strong>Telekomunikasi &amp; Sistem Informasi</strong> di Universitas
+          Lampung, Agustus 2021 – Feb 2025. Aktif di berorganisasi, proyek penelitian, dan magang di luar kampus.
         </Head>
 
         <div className="grid grid-kampus">
@@ -160,7 +160,14 @@ export function Kampus() {
             <div key={k.pose + k.bg} className={`card lift ${k.tilt} kampus-card`} style={{ background: k.bg }} data-build="box">
               <Use id={k.pose} label={k.label} className="kampus-pose" />
               <div>
-                {k.big ? <div className="num">{k.big}</div> : <div className="strong">{k.title}</div>}
+                {k.big ? (
+                  <div className="num">
+                    {k.big}
+                    {k.unit && <span className="num-unit"> {k.unit}</span>}
+                  </div>
+                ) : (
+                  <div className="strong">{k.title}</div>
+                )}
                 <div className={k.big ? '' : 'small'}>{k.small}</div>
               </div>
             </div>
@@ -206,16 +213,114 @@ function CoinRain() {
   );
 }
 
+interface Link {
+  d: string;
+  sx: number;
+  sy: number;
+  on: boolean;
+}
+
+/**
+ * Tali + panah timeline antar kartu kerja. Posisinya dihitung dari letak kartu
+ * (offsetLeft/Top, tidak terpengaruh animasi), jadi pas di desktop (1 baris)
+ * maupun tablet/HP (2x2: kanan → turun ke baris bawah → kanan).
+ */
+function JobLinks({ listRef }: { listRef: RefObject<HTMLOListElement> }) {
+  const [links, setLinks] = useState<Link[]>([]);
+
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    let raf = 0;
+
+    const compute = () => {
+      raf = 0;
+      const cards = Array.from(list.children) as HTMLElement[];
+      const out: Link[] = [];
+      for (let i = 0; i < cards.length - 1; i++) {
+        const a = cards[i];
+        const b = cards[i + 1];
+        const [ax, ay, aw, ah] = [a.offsetLeft, a.offsetTop, a.offsetWidth, a.offsetHeight];
+        const [bx, by, bw, bh] = [b.offsetLeft, b.offsetTop, b.offsetWidth, b.offsetHeight];
+        let d: string;
+        let sx: number;
+        let sy: number;
+        if (bx > ax + aw - 4) {
+          // kartu berikutnya di sebelah kanan: tali melengkung ke bawah sedikit
+          sx = ax + aw;
+          sy = ay + ah * 0.55;
+          const ex = bx - 3;
+          const ey = by + bh * 0.55;
+          const dx = ex - sx;
+          d = `M${sx} ${sy} C${sx + dx * 0.4} ${sy + 26} ${ex - dx * 0.4} ${ey + 26} ${ex} ${ey}`;
+        } else {
+          // pindah baris: dari pojok kiri-bawah kartu ini ke sisi kanan kartu di baris bawah
+          sx = ax + 16;
+          sy = ay + ah;
+          const ex = bx + bw + 3;
+          const ey = by + 30;
+          d = `M${sx} ${sy} C${sx - 4} ${sy + 52} ${ex + 36} ${ey - 42} ${ex} ${ey}`;
+        }
+        const on = a.classList.contains('is-built') && b.classList.contains('is-built');
+        out.push({ d, sx, sy, on });
+      }
+      setLinks(out);
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(compute);
+    };
+
+    compute();
+    const ro = new ResizeObserver(schedule);
+    ro.observe(list);
+    // tampilkan tali setelah kedua kartu selesai "dibangun" oleh swarm
+    const mo = new MutationObserver(schedule);
+    Array.from(list.children).forEach((c) => mo.observe(c, { attributes: true, attributeFilter: ['class'] }));
+    document.fonts?.ready.then(schedule);
+    return () => {
+      ro.disconnect();
+      mo.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [listRef]);
+
+  return (
+    <svg className="job-links" aria-hidden="true" focusable="false">
+      <defs>
+        <marker
+          id="jl-arrow"
+          viewBox="0 0 12 12"
+          refX="9"
+          refY="6"
+          markerWidth="13"
+          markerHeight="13"
+          markerUnits="userSpaceOnUse"
+          orient="auto"
+        >
+          <path d="M1 1 L11 6 L1 11 Z" fill="#1B1B1B" stroke="#1B1B1B" strokeWidth="1.5" strokeLinejoin="round" />
+        </marker>
+      </defs>
+      {links.map((l, i) => (
+        <g key={i} className={`job-link${l.on ? ' is-on' : ''}`}>
+          <path d={l.d} className="job-rope" markerEnd="url(#jl-arrow)" />
+          <circle cx={l.sx} cy={l.sy} r={5.5} className="job-knot" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 export function Kerja() {
+  const jobsRef = useRef<HTMLOListElement>(null);
   return (
     <section id="kerja" className="band">
       <CoinRain />
       <div className="wrap rel">
         <Deco id="briefcase" w={150} h={125} anim="a-bob" style={{ top: 46, right: 40, rotate: '6deg' }} />
-        <Deco id="idcard" w={100} h={130} anim="a-swing" style={{ top: 30, right: 230, rotate: '-8deg' }} />
-        <Deco id="moneybag" w={78} h={86} anim="a-bob a-d2" style={{ top: 120, right: 360, rotate: '-6deg' }} />
-        <Deco id="banknote" w={96} h={55} anim="a-float" style={{ top: 30, right: 410, rotate: '10deg' }} />
-        <Deco id="coins-stack" w={58} h={58} anim="a-bob a-d3" style={{ top: 150, right: 150 }} />
+        <Deco id="idcard" w={100} h={130} anim="a-swing" md style={{ top: 30, right: 230, rotate: '-8deg' }} />
+        <Deco id="moneybag" w={78} h={86} anim="a-bob a-d2" md style={{ top: 120, right: 360, rotate: '-6deg' }} />
+        <Deco id="banknote" w={96} h={55} anim="a-float" md style={{ top: 30, right: 410, rotate: '10deg' }} />
+        <Deco id="coins-stack" w={58} h={58} anim="a-bob a-d3" md style={{ top: 150, right: 150 }} />
         {/* versi HP: koin kecil di pojok judul */}
         <span className="deco show-sm a-bob" style={{ top: 34, right: 16 }}>
           <Use id="coins-stack" w={44} h={44} />
@@ -223,15 +328,16 @@ export function Kerja() {
         <span className="deco show-sm a-bob a-d2" style={{ top: 30, right: 66 }}>
           <Use id="coin" w={26} h={26} className="a-coin" />
         </span>
-        <Deco id="star" w={36} h={36} anim="a-twinkle" style={{ top: 168, right: 480 }} />
-        <Deco id="spark" w={30} h={30} anim="a-spin" style={{ top: 196, right: 250 }} />
+        <Deco id="star" w={36} h={36} anim="a-twinkle" md style={{ top: 168, right: 480 }} />
+        <Deco id="spark" w={30} h={30} anim="a-spin" md style={{ top: 196, right: 250 }} />
 
         <Head label="BAB 2" color="#1E4FA0" title="Petualangan after kuliah.">
           Gpp ganti2 kostum di setiap kantor, dari advertising sampai perbankan, yang penting hardware software!
           Gasss
         </Head>
 
-        <ol className="grid grid-jobs">
+        <div className="jobs-wrap">
+        <ol className="grid grid-jobs" ref={jobsRef}>
           {jobs.map((j, i) => (
             <li
               key={j.org}
@@ -258,6 +364,8 @@ export function Kerja() {
             </li>
           ))}
         </ol>
+        <JobLinks listRef={jobsRef} />
+        </div>
       </div>
     </section>
   );
@@ -565,17 +673,83 @@ function SocialIcon({ name }: { name: string }) {
   );
 }
 
+/* --------------------------------------------- padang semak di bawah epilog */
+
+const BUSH_PATH = 'M6 58 Q0 36 18 32 Q20 12 42 16 Q54 0 72 12 Q92 6 96 26 Q118 28 114 58 Z';
+const FRONT_FILLS = ['#7DDB8A', '#9BE07A', '#6CC57C', '#8AE39A'];
+
+/** Semak berlapis + rumput + bunga selebar layar (deterministik, tanpa acak). */
+function Meadow() {
+  const back = Array.from({ length: 22 }, (_, i) => ({
+    x: -70 + i * 70 + ((i * 37) % 24),
+    s: 1.05 + ((i * 7) % 5) / 10,
+  }));
+  const front = Array.from({ length: 26 }, (_, i) => ({
+    x: -50 + i * 58 + ((i * 53) % 22),
+    s: 0.75 + ((i * 3) % 4) / 10,
+    fill: FRONT_FILLS[i % FRONT_FILLS.length],
+  }));
+  const tufts = Array.from({ length: 34 }, (_, i) => ({ x: 20 + i * 42 + ((i * 17) % 18), y: 168 + ((i * 11) % 22) }));
+  const flowers = Array.from({ length: 12 }, (_, i) => ({ x: 60 + i * 118 + ((i * 29) % 40), y: 160 + ((i * 13) % 20), s: 18 + (i % 3) * 4 }));
+  const ground = 'M0 134 Q120 120 240 132 T480 130 T720 134 T960 128 T1200 134 T1440 130';
+
+  return (
+    <div className="meadow" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice">
+        {back.map((b, i) => (
+          <path
+            key={`b${i}`}
+            d={BUSH_PATH}
+            fill="#4FAE5C"
+            stroke="#1B1B1B"
+            strokeWidth="3"
+            strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
+            transform={`translate(${b.x} ${126 - 58 * b.s}) scale(${b.s})`}
+          />
+        ))}
+        <path d={`${ground} V200 H0 Z`} fill="#6CC57C" />
+        <path d={ground} fill="none" stroke="#1B1B1B" strokeWidth="3" />
+        {front.map((b, i) => (
+          <path
+            key={`f${i}`}
+            d={BUSH_PATH}
+            fill={b.fill}
+            stroke="#1B1B1B"
+            strokeWidth="3"
+            strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
+            transform={`translate(${b.x} ${156 - 58 * b.s}) scale(${b.s})`}
+          />
+        ))}
+        {tufts.map((t, i) => (
+          <path
+            key={`t${i}`}
+            d={`M${t.x} ${t.y} l3 -11 l3 9 l4 -14 l3 14 l3 -9 l3 11`}
+            fill="none"
+            stroke="#2F7D3B"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        ))}
+        {flowers.map((f, i) => (
+          <use key={`fl${i}`} href="#flower" x={f.x} y={f.y} width={f.s} height={f.s} />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 export function Epilog() {
   return (
+    <div className="epilog-band">
     <section id="kontak" className="wrap rel epilog">
       <Deco id="cloud" w={120} h={60} anim="a-drift" keep style={{ top: 30, left: 40 }} />
       <Deco id="minidrone" w={80} h={40} anim="a-hover" keep style={{ top: 50, right: 120, rotate: '8deg' }} />
       <Deco id="sun" w={60} h={60} anim="a-spin-slow" keep style={{ top: 20, right: 30 }} />
       <Deco id="cube" w={50} h={50} anim="a-float" style={{ top: 70, left: 220, color: C.green }} />
       <Deco id="arc" w={46} h={46} anim="a-float a-d2" style={{ top: 40, right: 280, color: C.teal }} />
-      <Deco id="loop" w={120} h={40} anim="a-bob" style={{ bottom: 40, left: '44%' }} />
-      <Deco id="bush" w={180} h={90} keep style={{ bottom: 20, left: 0 }} />
-      <Deco id="bush" w={200} h={100} keep style={{ bottom: 20, right: 0 }} />
 
       <div className="card epilog-card" style={{ background: C.yellow }} data-build="box">
         <Use id="pose-yeay" label="Maskot Rico bersorak" className="epilog-pose" />
@@ -615,6 +789,8 @@ export function Epilog() {
         <Use id="star" w={28} h={28} className="epilog-star2 a-twinkle a-d2" />
       </div>
     </section>
+    <Meadow />
+    </div>
   );
 }
 
