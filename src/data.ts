@@ -37,6 +37,7 @@ export const nav = [
   { id: 'drone', label: 'Drone & IoT' },
   { id: 'kreatif', label: 'Kreatif' },
   { id: 'webdev', label: 'Web Dev' },
+  { id: 'sekilas', label: 'Statistik' },
   { id: 'kontak', label: 'Kontak', accent: true },
 ];
 

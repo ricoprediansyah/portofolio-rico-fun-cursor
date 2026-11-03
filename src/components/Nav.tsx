@@ -13,8 +13,8 @@ function Logo({ build }: { build?: boolean }) {
   );
 }
 
-/** Isi menu garis-tiga (HP/tablet): Kontak sudah tampil di luar menu, gantinya tombol Statistik. */
-const sheetNav = [...nav.filter((n) => n.id !== 'kontak'), { id: 'sekilas', label: 'Statistik', accent: true }];
+/** Isi menu garis-tiga (HP/tablet): Kontak sudah tampil di luar menu. */
+const sheetNav = nav.filter((n) => n.id !== 'kontak');
 
 /** Tombol Kontak yang tetap terlihat di samping tombol menu (hanya mode garis-tiga). */
 function ContactPill({ active }: { active?: string }) {
@@ -156,7 +156,7 @@ export function FloatingNav() {
 
   // Tandai bab yang sedang dibaca.
   useEffect(() => {
-    const els = sheetNav.concat(nav.filter((n) => n.id === 'kontak')).map((n) => document.getElementById(n.id)).filter(Boolean) as HTMLElement[];
+    const els = nav.map((n) => document.getElementById(n.id)).filter(Boolean) as HTMLElement[];
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
