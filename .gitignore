@@ -1,0 +1,7 @@
+node_modules
+dist
+*.local
+.DS_Store
+
+# file desain mentah (export), tidak dibutuhkan untuk build
+Portofolio Rico — Story.html
