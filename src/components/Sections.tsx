@@ -88,11 +88,11 @@ export function Prolog() {
           <strong>Anak elektro yang banyak kesukaan.</strong> Lulusan Teknik Elektro Unila yang betah ngoprek
           IoT, jaringan, Drone, dan AI. <strong>Sekarang Officer IT di Bank Mandiri.</strong>
         </p>
-        <div className="cta-row" data-build="box">
-          <a href="#kampus" className="btn" style={{ background: C.orange }}>
+        <div className="cta-row">
+          <a href="#kampus" className="btn" style={{ background: C.orange }} data-build="box">
             Mulai cerita
           </a>
-          <a href={links.linkedin} className="btn" style={{ background: C.white }} target="_blank" rel="noopener noreferrer">
+          <a href={links.linkedin} className="btn" style={{ background: C.white }} target="_blank" rel="noopener noreferrer" data-build="box">
             LinkedIn
           </a>
         </div>
