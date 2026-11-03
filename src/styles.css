@@ -2032,6 +2032,11 @@ svg [class*='a-'] {
 .swarm [data-build='text'].is-built {
   animation: none;
 }
+/* Setelah animasi muncul selesai, matikan supaya tidak diputar ulang
+   (mis. sesudah animasi hover kartu berhenti → kartu sempat berkedip/hilang). */
+.swarm [data-build].is-built.is-settled {
+  animation: none;
+}
 @keyframes build-in {
   from {
     opacity: 0;

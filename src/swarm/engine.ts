@@ -136,7 +136,7 @@ export class SwarmEngine {
   replay() {
     this.teardown();
     document.querySelectorAll<HTMLElement>('[data-build]').forEach((el) => {
-      el.classList.remove('is-built', 'is-building');
+      el.classList.remove('is-built', 'is-building', 'is-settled');
       el.style.clipPath = '';
     });
     this.start();

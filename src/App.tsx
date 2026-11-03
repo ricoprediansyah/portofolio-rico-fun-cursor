@@ -18,7 +18,11 @@ function useCharBoing() {
       target.classList.add('is-boing');
     };
     const onEnd = (e: AnimationEvent) => {
-      if (e.animationName === 'char-boing') (e.target as Element).classList.remove('is-boing');
+      const el = e.target as Element;
+      if (e.animationName === 'char-boing') el.classList.remove('is-boing');
+      // animasi muncul (swarm) selesai → tandai supaya tidak diputar ulang saat hover berakhir
+      if ((e.animationName === 'build-in' || e.animationName === 'pop-in') && el.classList.contains('is-built'))
+        el.classList.add('is-settled');
     };
     document.addEventListener('pointerdown', onDown);
     document.addEventListener('animationend', onEnd);
