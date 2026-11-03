@@ -23,7 +23,7 @@ import yeayB from '../assets/char/yeay-b.webp';
 import yeay from '../assets/char/yeay.webp';
 
 /** Gambar latar prolog (pegunungan, bank, tambak, greenhouse) beserta ukuran aslinya. */
-export const scene = { src: sceneImg, w: 2014, h: 772 };
+export const scene = { src: sceneImg, w: 2014, h: 766 };
 
 // id simbol -> [url, lebar, tinggi]
 const list: Record<string, [string, number, number]> = {
