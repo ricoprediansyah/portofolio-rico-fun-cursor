@@ -455,8 +455,11 @@ export function Skill() {
           <div className="grid grid-2">
             {sideQuests.map((q) => (
               <div key={q.title} className={`card lift ${q.tilt} quest`} style={{ background: q.bg }} data-build="box">
-                <div className="strong">{q.title}</div>
-                <div>{q.text}</div>
+                <Use id={q.icon} w={52} h={52} className="quest-icon" />
+                <div>
+                  <div className="strong">{q.title}</div>
+                  <div>{q.text}</div>
+                </div>
               </div>
             ))}
           </div>

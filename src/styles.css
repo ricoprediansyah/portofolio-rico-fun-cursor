@@ -1266,6 +1266,32 @@ svg [class*='a-'] {
 
 .quest {
   padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.quest-icon {
+  flex-shrink: 0;
+  transition:
+    rotate 0.35s cubic-bezier(0.3, 1.8, 0.5, 1),
+    scale 0.35s cubic-bezier(0.3, 1.8, 0.5, 1);
+}
+@media (hover: hover) {
+  .quest:hover .quest-icon {
+    rotate: -10deg;
+    scale: 1.15;
+  }
+}
+@media (max-width: 760px) {
+  .quest {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .quest-icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 .skills {
   display: flex;

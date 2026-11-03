@@ -148,10 +148,10 @@ export const projects = [
 ];
 
 export const sideQuests = [
-  { title: 'Studi Independen AI', text: 'YOLOv8 untuk kualitas pohon sawit — Juara 3 Best Project', bg: C.teal, tilt: 'tilt-l' },
-  { title: 'Ahli K3 Umum', text: 'Sertifikasi BNSP, Mei 2026', bg: C.yellow, tilt: '' },
-  { title: 'Proyek elektro', text: 'Single line GI Tarahan, amplifier, kontrol PID', bg: C.green, tilt: 'tilt-r' },
-  { title: 'PPK Ormawa 2023', text: 'Lolos pendanaan Kemendikbudristek', bg: C.orange, tilt: 'tilt-l' },
+  { title: 'Studi Independen AI', text: 'YOLOv8 untuk kualitas pohon sawit — Juara 3 Best Project', bg: C.teal, tilt: 'tilt-l', icon: 'ic-ai' },
+  { title: 'Ahli K3 Umum', text: 'Sertifikasi BNSP, Mei 2026', bg: C.yellow, tilt: '', icon: 'ic-k3' },
+  { title: 'Proyek elektro', text: 'Single line GI Tarahan, amplifier, kontrol PID', bg: C.green, tilt: 'tilt-r', icon: 'ic-elektro' },
+  { title: 'PPK Ormawa 2023', text: 'Lolos pendanaan Kemendikbudristek', bg: C.orange, tilt: 'tilt-l', icon: 'ic-grant' },
 ];
 
 export const skills = [
@@ -161,6 +161,7 @@ export const skills = [
   'Computer Vision · ML',
   'Figma · React',
   'Photoshop · Illustrator · Premiere',
+  'Laravel · React',
 ];
 
 export const roles = [
