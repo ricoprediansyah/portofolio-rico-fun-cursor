@@ -1262,13 +1262,19 @@ svg [class*='a-'] {
    Pakai `transform` supaya tidak menimpa `rotate` (tilt) & `translate` (lift) kartu. */
 @media (prefers-reduced-motion: no-preference) {
   @media (hover: hover) {
-    #drone .card:hover {
+    #drone .card:hover,
+    #kreatif .kreatif-art:hover {
       animation: card-sway 1.4s ease-in-out infinite;
     }
   }
-  #drone .card:active {
+  #drone .card:active,
+  #kreatif .kreatif-art:active {
     animation: card-sway 1.4s ease-in-out infinite;
   }
+}
+/* Bab 4: kartu oranye + karakternya bergoyang bersama, bertumpu di bawah */
+.kreatif-art {
+  transform-origin: 50% 90%;
 }
 @keyframes card-sway {
   0%,
