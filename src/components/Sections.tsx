@@ -178,7 +178,7 @@ const RAIN = [
   { id: 'coin', left: '3%', top: '30%', size: 26, dur: 5, delay: 0 },
   { id: 'banknote', left: '4%', top: '78%', size: 46, dur: 6.5, delay: -2 },
   { id: 'coin', left: '33%', top: '93%', size: 20, dur: 4.5, delay: -1 },
-  { id: 'coin', left: '50%', top: '26%', size: 24, dur: 5.5, delay: -3 },
+  { id: 'coin', left: '62%', top: '33%', size: 24, dur: 5.5, delay: -3 },
   { id: 'banknote', left: '64%', top: '94%', size: 40, dur: 6, delay: -4 },
   { id: 'coin', left: '93%', top: '55%', size: 22, dur: 5, delay: -2.5 },
   { id: 'coin', left: '95%', top: '86%', size: 30, dur: 5.8, delay: -1.5 },
@@ -226,8 +226,9 @@ export function Kerja() {
         <Deco id="star" w={36} h={36} anim="a-twinkle" style={{ top: 168, right: 480 }} />
         <Deco id="spark" w={30} h={30} anim="a-spin" style={{ top: 196, right: 250 }} />
 
-        <Head label="BAB 2" color="#1E4FA0" title="Petualangan kerja.">
-          Ganti kostum di setiap kantor, dari advertising sampai perbankan.
+        <Head label="BAB 2" color="#1E4FA0" title="Petualangan after kuliah.">
+          Gpp ganti2 kostum di setiap kantor, dari advertising sampai perbankan, yang penting hardware software!
+          Gasss
         </Head>
 
         <ol className="grid grid-jobs">
@@ -273,8 +274,9 @@ export function Drone() {
       <section id="drone" className="wrap rel">
         <Deco id="arc" w={44} h={44} anim="a-float" md style={{ top: 120, right: 480, color: C.green }} />
 
-        <Head label="BAB 3 · sorotan utama" color="#1F6B3A" title="Di tanah, di air dan di udara.">
-          Drone pemetaan, sensor bertenaga surya, sampai robot rover sawit. Bab paling seru dari perjalanan Rico.
+        <Head label="BAB 3 · sorotan utama" color="#1F6B3A" title="Kuliahnya dulu di tanah, di air bisa juga di udara.">
+          Sok sibuk dari drone pemetaan, sensor bertenaga surya di tanah, deteksi tsunami di air, sampai nerbangin
+          drone buat pemetaan kebun sawit, ya sabi ajaa
         </Head>
 
         <div className="grid grid-drone">
@@ -345,7 +347,7 @@ export function Kreatif() {
             <span className="sec-label" style={{ color: '#7A3410' }} data-build="pop">
               BAB 4
             </span>
-            <h2 data-build="text">Si paling kreatif.</h2>
+            <h2 data-build="text">Nyambi dikit, si paling kreatif.</h2>
           </div>
           <div className="grid grid-2">
             {kreatifStats.map((s) => (
@@ -391,7 +393,7 @@ export function WebDev() {
 
       <div className="wrap wrap-web">
         <div className="web-top">
-          <Head label="BAB 5" color="#0E4F4A" title="Petualangan web dev.">
+          <Head label="BAB 5" color="#0E4F4A" title="Iseng-iseng buat web projek atau pribadi.">
             Dari sensor di greenhouse sampai marketplace CPNS. Ada masalah? Rico bikinin web-nya.
           </Head>
           <div className="web-mascot hide-sm" data-build="box">

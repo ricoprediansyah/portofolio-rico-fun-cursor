@@ -63,15 +63,15 @@ export const marquee: Array<{ face: 'head' | 'head-happy'; bg: string } | { text
 ];
 
 export const kampus = [
-  { pose: 'pose-toga', label: 'Rico wisuda memegang ijazah', bg: C.yellow, tilt: '', big: '3.81/4.00', small: 'Lulus Cumlaude' },
-  { pose: 'rk-p-point', label: 'Rico melangkah cepat', bg: C.peach, tilt: 'tilt-r', big: '3,48 th', small: 'masa studi' },
+  { pose: 'pose-toga', label: 'Rico wisuda memegang ijazah', bg: C.yellow, tilt: '', big: 'IPK 3.81/4.00', small: 'Lulus Cumlaude' },
+  { pose: 'rk-p-point', label: 'Rico melangkah cepat', bg: C.peach, tilt: 'tilt-r', big: '3,48 Tahun', small: 'masa studi' },
   { pose: 'rk-p-sit', label: 'Rico duduk belajar dengan tablet', bg: C.teal, tilt: '', title: 'UNESCO Summer Course', small: 'Modern Optics — serat optik, fotonika, sel surya (2023)' },
   { pose: 'pose-helmet', label: 'Rico dengan helm dan kunci pas', bg: C.green, tilt: 'tilt-l', title: 'Asisten Lab Telekomunikasi', small: 'Membimbing praktikum sistem komunikasi, MATLAB & Cisco' },
 ];
 
 export const jobs = [
   { when: 'Mar 2025 – Feb 2026', org: 'Fana Kreatif Produksi', role: 'IT Support & Designer — Starlink, CCTV, desain brand klien', pose: 'pose-idea', label: 'Maskot Rico mendapat ide desain', bg: C.yellow, tilt: 'tilt-l' },
-  { when: 'Apr – Jun 2026', org: 'Matra Digital Grup', role: 'Technician Engineer — merancang alur kerja & sistem task teknisi', pose: 'pose-helmet', label: 'Maskot Rico memperbaiki perangkat', bg: C.green, tilt: 'tilt-r' },
+  { when: 'Apr – Jun 2026', org: 'Matra Digital Group', role: 'Technician Engineer — merancang alur kerja & sistem task teknisi', pose: 'pose-helmet', label: 'Maskot Rico memperbaiki perangkat', bg: C.green, tilt: 'tilt-r' },
   { when: 'Jun – Aug 2026', org: 'Byte Beyond Persona', role: 'Electrical Engineering — SLD, perencanaan listrik, smart IoT gedung', pose: 'pose-helmet', label: 'Rico sebagai teknisi listrik', bg: C.teal, tilt: 'tilt-l', bolt: true },
   { when: 'Sep 2026 – sekarang', org: 'Bank Mandiri', role: 'Officer Information Technology — ODP, kini tahap OJT', pose: 'pose-laptop', label: 'Maskot Rico bekerja dengan laptop', bg: C.orange, tilt: 'tilt-r', now: true, coins: true },
 ];
