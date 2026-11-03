@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as RPointerEvent, type ReactNode, type RefObject } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent as RMouseEvent, type PointerEvent as RPointerEvent, type ReactNode, type RefObject } from 'react';
 import * as art from '../art/fragments';
 import {
   C,
@@ -765,6 +765,22 @@ function Meadow() {
   );
 }
 
+/* Tombol email: langsung membuka draf email yang siap dikirim (penerima, subjek, salam sudah terisi). */
+const MAIL_SUBJECT = 'Halo Rico! 👋';
+const MAIL_BODY = 'Halo Rico,\n\nSaya lihat portofolio kamu dan ingin ngobrol soal ...\n\nSalam,\n';
+const mailtoHref = `mailto:${links.email}?subject=${encodeURIComponent(MAIL_SUBJECT)}&body=${encodeURIComponent(MAIL_BODY)}`;
+const gmailHref =
+  `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(links.email)}` +
+  `&su=${encodeURIComponent(MAIL_SUBJECT)}&body=${encodeURIComponent(MAIL_BODY)}`;
+
+/** Di laptop/PC (kursor mouse) buka layar tulis Gmail di tab baru — mailto: sering tidak
+ *  melakukan apa-apa kalau tidak ada aplikasi email. Di HP biarkan mailto: membuka aplikasi email. */
+function openMailCompose(e: RMouseEvent<HTMLAnchorElement>) {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  e.preventDefault();
+  window.open(gmailHref, '_blank', 'noopener,noreferrer');
+}
+
 export function Epilog() {
   return (
     <div className="epilog-band">
@@ -781,7 +797,13 @@ export function Epilog() {
           <span className="strong-sm" data-build="pop">EPILOG</span>
           <h2 data-build="text">Ceritanya belum tamat. Ayo ngobrol!</h2>
           <div className="cta-row left" data-build="box">
-            <a href={`mailto:${links.email}`} className="btn btn-mail" style={{ background: C.orange }}>
+            <a
+              href={mailtoHref}
+              className="btn btn-mail"
+              style={{ background: C.orange }}
+              onClick={openMailCompose}
+              title="Tulis email ke Rico"
+            >
               <MailIcon />
               {links.email}
             </a>
