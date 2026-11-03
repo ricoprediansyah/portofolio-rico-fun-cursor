@@ -328,7 +328,7 @@ export function Kreatif() {
   return (
     <section id="kreatif" className="band" style={{ background: C.peach }}>
       <div className="wrap rel split">
-        <Deco id="spark" w={40} h={40} anim="a-spin" keep style={{ top: 40, right: 60 }} />
+        <Deco id="spark" w={40} h={40} anim="a-spin" style={{ top: 40, right: 60 }} />
         <Deco id="star" w={34} h={34} anim="a-twinkle" style={{ top: 70, right: 200 }} />
         <Deco id="bolt" w={26} h={40} anim="a-twinkle a-d2" style={{ top: 30, right: 320 }} />
         <Deco id="cube" w={48} h={48} anim="a-float" style={{ top: 40, right: 440, color: C.yellow }} />
@@ -352,6 +352,7 @@ export function Kreatif() {
           <div className="grid grid-2">
             {kreatifStats.map((s) => (
               <div key={s.text} className={`card lift ${s.tilt} stat-card`} style={{ background: s.bg }} data-build="box">
+                <Use id={s.icon} w={56} h={56} className="stat-icon" />
                 <div className="num-md">{s.big}</div>
                 <div>{s.text}</div>
               </div>

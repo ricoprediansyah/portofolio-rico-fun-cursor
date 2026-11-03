@@ -1086,6 +1086,27 @@ svg [class*='a-'] {
 .stat-card {
   padding: 20px;
 }
+/* ikon di pojok kanan atas kartu kreatif */
+.stat-icon {
+  float: right;
+  margin: -4px -4px 4px 10px;
+  transition:
+    rotate 0.35s cubic-bezier(0.3, 1.8, 0.5, 1),
+    scale 0.35s cubic-bezier(0.3, 1.8, 0.5, 1);
+}
+@media (hover: hover) {
+  .stat-card:hover .stat-icon {
+    rotate: -10deg;
+    scale: 1.15;
+  }
+}
+@media (max-width: 760px) {
+  .stat-icon {
+    width: 32px;
+    height: 32px;
+    margin: -2px -3px 2px 6px;
+  }
+}
 .tools {
   display: flex;
   flex-wrap: wrap;

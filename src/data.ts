@@ -83,10 +83,10 @@ export const droneMini = [
 ];
 
 export const kreatifStats = [
-  { big: '30+', text: 'event digital kreatif sebagai speaker & juri', bg: C.white, tilt: 'tilt-r' },
-  { big: '150K', text: 'followers @official_unila — Gendong sosmed desain grafis 2023', bg: C.white, tilt: '' },
-  { big: '50K', text: 'followers @bem_unila — Dirjen Desain Grafis BEM 2023', bg: C.white, tilt: '' },
-  { big: '80', text: 'anggota dipimpin — Kadep Kominfo HIMATRO 2023', bg: C.white, tilt: 'tilt-l' },
+  { big: '30+', text: 'event digital kreatif sebagai speaker & juri', bg: C.white, tilt: 'tilt-r', icon: 'ic-mic', label: 'Mikrofon panggung' },
+  { big: '150K', text: 'followers @official_unila — Gendong sosmed desain grafis 2023', bg: C.white, tilt: '', icon: 'ic-likes', label: 'HP dengan notifikasi like' },
+  { big: '50K', text: 'followers @bem_unila — Dirjen Desain Grafis BEM 2023', bg: C.white, tilt: '', icon: 'ic-pen', label: 'Pen tool desain grafis' },
+  { big: '80', text: 'anggota dipimpin — Kadep Kominfo HIMATRO 2023', bg: C.white, tilt: 'tilt-l', icon: 'ic-team', label: 'Tim yang dipimpin' },
 ];
 
 // Logo asli aplikasi (src/assets/logos). Sumber: Wikimedia Commons, Devicon (MIT), Iconify Logos (CC0).
