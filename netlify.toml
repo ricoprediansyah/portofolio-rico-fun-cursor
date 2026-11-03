@@ -1,0 +1,13 @@
+# Pengaturan deploy Netlify (otomatis dibaca saat build)
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Aset hasil build punya hash di namanya, aman di-cache lama
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
