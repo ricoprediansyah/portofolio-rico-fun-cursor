@@ -412,7 +412,7 @@ export function Drone() {
                 <div className="strong">Deteksi dini tsunami</div>
                 <div>Sistem IoT tenaga surya untuk mitigasi bencana pesisir</div>
               </div>
-              <Use id="pose-helmet" label="Rico teknisi dengan helm dan kunci pas" className="side-pose" />
+              <Use id="pose-helmet-b" label="Rico teknisi dengan helm dan kunci pas" className="side-pose" />
             </div>
           </div>
         </div>
@@ -446,7 +446,7 @@ export function Kreatif() {
         <div className="kreatif-art hide-sm" data-build="box">
           <div className="card tilt-l kreatif-back" style={{ background: C.orange }} />
           <Use id="pose-idea" label="Rico punya ide desain" className="kreatif-main a-bob" />
-          <Use id="pose-mic" label="Maskot Rico memegang mikrofon" className="kreatif-mic" />
+          <Use id="pose-mic-b" label="Maskot Rico memegang mikrofon" className="kreatif-mic" />
           <Use id="star" w={40} h={40} className="kreatif-star a-twinkle" />
         </div>
 
@@ -506,7 +506,7 @@ export function WebDev() {
             Dari sensor di greenhouse sampai marketplace CPNS. Ada masalah? Rico bikinin web-nya.
           </Head>
           <div className="web-mascot hide-sm" data-build="box">
-            <Use id="pose-laptop" label="Maskot Rico ngoding di laptop" className="web-pose" />
+            <Use id="pose-laptop-b" label="Maskot Rico ngoding di laptop" className="web-pose" />
             <div className="card tilt-l code-chip dark">&lt;/&gt;</div>
             <div className="card tilt-r code-chip">
               npm run dev<span className="blink">_</span>
@@ -582,7 +582,7 @@ export function Skill() {
 
         <div className="skill-art hide-sm" data-build="box">
           <div className="card tilt-r skill-back" style={{ background: C.teal }} />
-          <Use id="pose-idea" label="Maskot Rico mendapat ide" className="skill-pose a-bob" />
+          <Use id="pose-idea-b" label="Maskot Rico mendapat ide" className="skill-pose a-bob" />
         </div>
       </div>
     </section>
@@ -593,7 +593,7 @@ export function Skill() {
 
 export function Peran() {
   return (
-    <section aria-label="Para Rico" className="peran" style={{ background: C.orange }}>
+    <section id="peran" aria-label="Para Rico" className="peran" style={{ background: C.orange }}>
       <div className="wrap peran-wrap">
         <h2 data-build="text">Satu Rico, banyak peran.</h2>
         <ul className="peran-row">

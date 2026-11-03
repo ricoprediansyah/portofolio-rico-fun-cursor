@@ -91,7 +91,7 @@ export const kampus = [
 
 export const jobs = [
   { when: 'Mar 2025 – Feb 2026', org: 'Fana Kreatif Produksi', role: 'IT Support & Designer — Starlink, elektronika, desain brand klien', pose: 'pose-idea', label: 'Maskot Rico mendapat ide desain', bg: C.yellow, tilt: 'tilt-l' },
-  { when: 'Apr – Jun 2026', org: 'Matra Digital Group', role: 'Technician Engineer — maintenance & memperbaiki alat elektronika', pose: 'pose-helmet', label: 'Maskot Rico memperbaiki perangkat', bg: C.green, tilt: 'tilt-r' },
+  { when: 'Apr – Jun 2026', org: 'Matra Digital Group', role: 'Technician Engineer — maintenance & memperbaiki alat elektronika', pose: 'pose-helmet-b', label: 'Maskot Rico memperbaiki perangkat', bg: C.green, tilt: 'tilt-r' },
   { when: 'Jun – Aug 2026', org: 'Byte Beyond Persona', role: 'Electrical Engineering — SLD, perencanaan listrik, smart IoT gedung', pose: 'pose-helmet', label: 'Rico sebagai teknisi listrik', bg: C.teal, tilt: 'tilt-l', bolt: true },
   { when: 'Sep 2026 – sekarang', org: 'Bank Mandiri', role: 'Officer Information Technology — ODP, kini tahap OJT', pose: 'pose-laptop', label: 'Maskot Rico bekerja dengan laptop', bg: C.orange, tilt: 'tilt-r', now: true, coins: true },
 ];
@@ -185,12 +185,12 @@ export const skills = [
 ];
 
 export const roles = [
-  { pose: 'pose-wave', label: 'Rico melambai', w: 120, h: 170 },
-  { pose: 'pose-toga', label: 'Rico wisuda', w: 120, h: 172 },
-  { pose: 'pose-drone', label: 'Rico pilot drone', w: 110, h: 205 },
-  { pose: 'pose-mic', label: 'Rico pembicara', w: 120, h: 170 },
-  { pose: 'pose-helmet', label: 'Rico teknisi', w: 120, h: 177 },
-  { pose: 'pose-laptop', label: 'Rico programmer', w: 120, h: 170 },
-  { pose: 'pose-idea', label: 'Rico punya ide', w: 126, h: 178 },
-  { pose: 'pose-yeay', label: 'Rico bersorak', w: 120, h: 170 },
+  { pose: 'pose-wave', label: 'Rico melambai', w: 99, h: 190 },
+  { pose: 'pose-toga', label: 'Rico wisuda', w: 106, h: 190 },
+  { pose: 'pose-drone', label: 'Rico pilot drone', w: 128, h: 190 },
+  { pose: 'pose-mic', label: 'Rico pembicara', w: 107, h: 190 },
+  { pose: 'pose-helmet', label: 'Rico teknisi', w: 102, h: 190 },
+  { pose: 'pose-laptop', label: 'Rico programmer', w: 92, h: 190 },
+  { pose: 'pose-idea', label: 'Rico punya ide', w: 112, h: 190 },
+  { pose: 'pose-yeay', label: 'Rico bersorak', w: 124, h: 190 },
 ];

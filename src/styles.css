@@ -1481,8 +1481,8 @@ svg [class*='a-'] {
 }
 .code-chip {
   position: absolute;
-  top: 60px;
-  right: -10px;
+  bottom: 34px;
+  right: -40px;
   background: #fff;
   padding: 8px 14px;
   border-radius: 14px;
@@ -1492,6 +1492,7 @@ svg [class*='a-'] {
 }
 .code-chip.dark {
   top: 10px;
+  bottom: auto;
   left: -10px;
   right: auto;
   background: var(--ink);

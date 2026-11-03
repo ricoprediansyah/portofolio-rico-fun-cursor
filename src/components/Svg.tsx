@@ -1,11 +1,12 @@
 import type { CSSProperties } from 'react';
+import chars from '../art/chars';
 import sprites from '../art/sprites';
 
 /** Sprite global: semua simbol karakter & ornamen. Render sekali di root. */
 export function Sprites() {
   return (
     <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true" focusable="false">
-      <defs dangerouslySetInnerHTML={{ __html: sprites }} />
+      <defs dangerouslySetInnerHTML={{ __html: sprites + chars }} />
     </svg>
   );
 }
