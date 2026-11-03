@@ -1293,6 +1293,43 @@ svg [class*='a-'] {
     animation: card-sway 1.4s ease-in-out infinite;
   }
 }
+/* Bab 5: kilau tipis menyapu kartu proyek sekali tiap disorot */
+#webdev .project::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+      115deg,
+      transparent 44%,
+      rgba(255, 255, 255, 0.65) 49%,
+      rgba(255, 255, 255, 0.65) 51%,
+      transparent 56%
+    )
+    no-repeat;
+  background-size: 250% 100%;
+  background-position: 130% 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @media (hover: hover) {
+    #webdev .project:hover::after {
+      animation: project-shine 0.9s ease-out;
+    }
+  }
+  #webdev .project:active::after {
+    animation: project-shine 0.9s ease-out;
+  }
+}
+@keyframes project-shine {
+  from {
+    background-position: 130% 0;
+  }
+  to {
+    background-position: -30% 0;
+  }
+}
+
 /* Bab 4: kartu oranye + karakternya bergoyang bersama, bertumpu di bawah */
 .kreatif-art {
   transform-origin: 50% 90%;
