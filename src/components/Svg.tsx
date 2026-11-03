@@ -22,11 +22,13 @@ interface UseProps {
 
 /** Pakai satu simbol dari sprite, mis. <Use id="pose-yeay" w={120} h={170} />. */
 export function Use({ id, w, h, label, className, style }: UseProps) {
+  // karakter Rico bisa disorot (goyang) & diklik (lompat), lihat .char di styles.css
+  const isChar = id.startsWith('pose-') || id.startsWith('rk-p-');
   return (
     <svg
       width={w}
       height={h}
-      className={className}
+      className={isChar ? `${className ?? ''} char` : className}
       style={style}
       role={label ? 'img' : undefined}
       aria-label={label}

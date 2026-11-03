@@ -33,7 +33,7 @@ export const droneHero = `
 <use href="#star" x="200" y="20" width="24" height="24"></use>
 <path d="M0 212 Q200 182 400 210 L400 240 L0 240 Z" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="3" stroke-linejoin="round"></path>
 <use href="#bush" x="300" y="196" width="100" height="50"></use>
-<use href="#rk-p-lookup" x="110" y="14" width="170" height="228"></use>
+<use class="char" href="#rk-p-lookup" x="110" y="14" width="170" height="228"></use>
 `;
 
 export const dronila = `
@@ -42,7 +42,7 @@ export const dronila = `
 <use href="#palm" x="166" y="92" width="62" height="86"></use>
 <use href="#palm" x="224" y="106" width="52" height="72"></use>
 <g class="a-hover"><use href="#minidrone" x="180" y="12" width="80" height="40"></use></g>
-<use href="#rk-p-point" x="14" y="26" width="112" height="160"></use>
+<use class="char" href="#rk-p-point" x="14" y="26" width="112" height="160"></use>
 <g class="a-drive"><use href="#rover" x="108" y="126" width="74" height="46"></use></g>
 `;
 
@@ -56,7 +56,7 @@ export const rubus = `
 <circle cx="225" cy="128" r="3.5" fill="#7DDB8A" stroke="#1B1B1B" stroke-width="1.5"></circle><circle cx="237" cy="128" r="3.5" fill="#EEF15A" stroke="#1B1B1B" stroke-width="1.5"></circle><circle cx="249" cy="128" r="3.5" fill="#F06A4A" stroke="#1B1B1B" stroke-width="1.5"></circle>
 <path d="M272 82 Q282 92 272 102 M280 74 Q296 92 280 110" fill="none" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round"></path>
 <use href="#bush" x="240" y="152" width="60" height="30"></use>
-<use href="#rk-p-sit" x="70" y="28" width="110" height="160"></use>
+<use class="char" href="#rk-p-sit" x="70" y="28" width="110" height="160"></use>
 `;
 
 export const udang = `
@@ -72,7 +72,7 @@ export const udang = `
 <rect x="160" y="62" width="40" height="28" rx="6" fill="#FFFFFF" stroke="#1B1B1B" stroke-width="3"></rect>
 <text x="180" y="81" text-anchor="middle" font-family="Lilita One, sans-serif" font-size="12" fill="#1B1B1B">pH 7.8</text>
 <path d="M196 46 Q204 54 196 62 M204 40 Q216 54 204 68" fill="none" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round"></path>
-<use href="#rk-p-wave" x="24" y="28" width="96" height="160"></use>
+<use class="char" href="#rk-p-wave" x="24" y="28" width="96" height="160"></use>
 `;
 
 export const iconGreenhouse = `

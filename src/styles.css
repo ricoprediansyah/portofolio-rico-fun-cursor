@@ -313,6 +313,64 @@ span.deco:active,
   rotate: -12deg;
 }
 
+/* Karakter Rico: goyang saat disorot, lompat + gepeng saat diklik/disentuh.
+   Animasinya di <use> bagian dalam, jadi tidak bentrok dengan animasi bob/hop di luarnya. */
+svg.char,
+use.char {
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+svg.char > use,
+use.char {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @media (hover: hover) {
+    svg.char:hover > use,
+    use.char:hover {
+      animation: char-wiggle 0.9s ease-in-out infinite;
+    }
+  }
+  svg.char > use.is-boing,
+  use.char.is-boing {
+    animation: char-boing 0.75s cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+}
+@keyframes char-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-6deg) scale(1.04);
+  }
+  75% {
+    transform: rotate(6deg) scale(1.04);
+  }
+}
+@keyframes char-boing {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  15% {
+    transform: translateY(0) scale(1.18, 0.8);
+  }
+  40% {
+    transform: translateY(-22%) scale(0.92, 1.1) rotate(-4deg);
+  }
+  60% {
+    transform: translateY(0) scale(1.1, 0.9) rotate(3deg);
+  }
+  78% {
+    transform: translateY(-5%) scale(0.98, 1.03);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
 @keyframes a-spin {
   to {
     transform: rotate(360deg);
