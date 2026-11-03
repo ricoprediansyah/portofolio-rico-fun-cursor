@@ -352,7 +352,7 @@ export function Kreatif() {
           <div className="grid grid-2">
             {kreatifStats.map((s) => (
               <div key={s.text} className={`card lift ${s.tilt} stat-card`} style={{ background: s.bg }} data-build="box">
-                {s.big ? <div className="num-md">{s.big}</div> : <div className="strong">{s.title}</div>}
+                <div className="num-md">{s.big}</div>
                 <div>{s.text}</div>
               </div>
             ))}
@@ -451,7 +451,7 @@ export function Skill() {
             </span>
             <h2 data-build="text">Side quest &amp; skill tree.</h2>
           </div>
-          <div className="grid grid-3">
+          <div className="grid grid-2">
             {sideQuests.map((q) => (
               <div key={q.title} className={`card lift ${q.tilt} quest`} style={{ background: q.bg }} data-build="box">
                 <div className="strong">{q.title}</div>

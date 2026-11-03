@@ -83,10 +83,10 @@ export const droneMini = [
 ];
 
 export const kreatifStats = [
-  { big: '50K', text: 'followers @bem_unila — Dirjen Desain Grafis BEM 2023', bg: C.white, tilt: 'tilt-r' },
-  { big: '80', text: 'anggota dipimpin — Kadep Kominfo HIMATRO 2023', bg: C.white, tilt: '' },
-  { big: '30+', text: 'event digital kreatif sebagai speaker & juri', bg: C.white, tilt: '' },
-  { title: 'PPK Ormawa 2023', text: 'Lolos pendanaan Kemendikbudristek', bg: C.yellow, tilt: 'tilt-l' },
+  { big: '30+', text: 'event digital kreatif sebagai speaker & juri', bg: C.white, tilt: 'tilt-r' },
+  { big: '150K', text: 'followers @official_unila — Gendong sosmed desain grafis 2023', bg: C.white, tilt: '' },
+  { big: '50K', text: 'followers @bem_unila — Dirjen Desain Grafis BEM 2023', bg: C.white, tilt: '' },
+  { big: '80', text: 'anggota dipimpin — Kadep Kominfo HIMATRO 2023', bg: C.white, tilt: 'tilt-l' },
 ];
 
 // Logo asli aplikasi (src/assets/logos). Sumber: Wikimedia Commons, Devicon (MIT), Iconify Logos (CC0).
@@ -151,6 +151,7 @@ export const sideQuests = [
   { title: 'Studi Independen AI', text: 'YOLOv8 untuk kualitas pohon sawit — Juara 3 Best Project', bg: C.teal, tilt: 'tilt-l' },
   { title: 'Ahli K3 Umum', text: 'Sertifikasi BNSP, Mei 2026', bg: C.yellow, tilt: '' },
   { title: 'Proyek elektro', text: 'Single line GI Tarahan, amplifier, kontrol PID', bg: C.green, tilt: 'tilt-r' },
+  { title: 'PPK Ormawa 2023', text: 'Lolos pendanaan Kemendikbudristek', bg: C.orange, tilt: 'tilt-l' },
 ];
 
 export const skills = [
