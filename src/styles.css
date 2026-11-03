@@ -2293,6 +2293,39 @@ svg [class*='a-'] {
   }
 }
 
+/* HP: tag gantung tetap ada, tapi cuma 3 terakhir (IT, Desain, Listrik) */
+@media (max-width: 760px) {
+  .hang-row {
+    left: 26px;
+    right: 26px;
+  }
+  .hang:nth-child(-n + 3) {
+    display: none;
+  }
+  .hang-string {
+    max-height: 22px;
+  }
+  .hang-pin {
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+  }
+  .hang-tag {
+    gap: 4px;
+    padding: 3px 9px;
+    font-size: 12px;
+    border-width: 2.5px;
+    box-shadow: 0 2px 0 var(--ink);
+  }
+  .hang-tag svg {
+    width: 12px;
+    height: 13px;
+  }
+  .prolog-copy {
+    padding-top: 74px;
+  }
+}
+
 /* HP: grid 2 kolom & kartu ringkas supaya satu layar muat beberapa kartu */
 @media (max-width: 760px) {
   .wrap {

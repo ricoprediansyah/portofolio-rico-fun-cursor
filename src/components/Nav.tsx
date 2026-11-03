@@ -87,7 +87,7 @@ export function HeroHeader() {
           <Links onPick={menu.close} />
         </nav>
       )}
-      <div className="hang-row hide-sm" aria-hidden="true">
+      <div className="hang-row" aria-hidden="true">
         {hangTags.map((t) => (
           <div className="hang" key={t.label}>
             <div className="hang-inner" onPointerOver={nudge} onPointerDown={nudge} onAnimationEnd={settle}>
