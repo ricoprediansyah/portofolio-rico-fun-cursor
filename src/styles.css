@@ -1884,15 +1884,44 @@ svg [class*='a-'] {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: center;
-  gap: 8px;
+  gap: 14px;
+}
+/* tiap karakter dapat slot selebar sama; badannya diletakkan di tengah slot,
+   properti (drone, tangan, konfeti) boleh keluar slot */
+.peran-row > li {
+  --slot: 104;
+  width: calc(var(--slot) * var(--k) * 1px);
+  display: flex;
+  align-items: flex-end;
 }
 .peran-pose {
   display: block;
+  flex-shrink: 0;
+  margin-left: calc(var(--dx) * var(--k) * 1px);
   width: calc(var(--w) * var(--k) * 1px);
   height: calc(var(--h) * var(--k) * 1px);
   transform-origin: 50% 100%;
   animation: hop 3.2s ease-in-out infinite;
   animation-delay: calc(var(--i) * 0.2s);
+}
+/* tablet & HP: 2 baris rapi × 4 karakter */
+@media (max-width: 1100px) {
+  .peran-row.peran-row {
+    --k: 0.9;
+    gap: 14px 10px;
+    max-width: calc((104 * var(--k) * 4 + 30) * 1px);
+    margin-inline: auto;
+  }
+}
+@media (max-width: 760px) {
+  .peran-row.peran-row {
+    --k: 0.7;
+  }
+}
+@media (max-width: 400px) {
+  .peran-row.peran-row {
+    --k: 0.64;
+  }
 }
 @keyframes hop {
   0%,

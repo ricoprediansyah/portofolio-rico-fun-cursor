@@ -626,7 +626,8 @@ export function Peran() {
                 id={r.pose}
                 label={r.label}
                 className="peran-pose"
-                style={{ '--i': i, '--w': r.w, '--h': r.h } as CSSProperties}
+                // --dx: geser supaya tengah badan (cx) jatuh di tengah slot (lebar 104)
+                style={{ '--i': i, '--w': r.w, '--h': r.h, '--dx': 52 - r.cx * r.w } as CSSProperties}
               />
             </li>
           ))}

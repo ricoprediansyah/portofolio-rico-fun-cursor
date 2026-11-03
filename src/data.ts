@@ -184,13 +184,15 @@ export const skills = [
   'Laravel · React',
 ];
 
+// Ukuran disamakan dari jarak mata→kaki (bukan bingkai gambar, karena topi/drone/konfeti ikut terhitung).
+// cx = posisi tengah badan (kaki) dalam lebar gambar, dipakai supaya jarak antar karakter rata.
 export const roles = [
-  { pose: 'pose-wave', label: 'Rico melambai', w: 99, h: 190 },
-  { pose: 'pose-toga', label: 'Rico wisuda', w: 106, h: 190 },
-  { pose: 'pose-drone', label: 'Rico pilot drone', w: 128, h: 190 },
-  { pose: 'pose-mic', label: 'Rico pembicara', w: 107, h: 190 },
-  { pose: 'pose-helmet', label: 'Rico teknisi', w: 102, h: 190 },
-  { pose: 'pose-laptop', label: 'Rico programmer', w: 92, h: 190 },
-  { pose: 'pose-idea', label: 'Rico punya ide', w: 112, h: 190 },
-  { pose: 'pose-yeay', label: 'Rico bersorak', w: 124, h: 190 },
+  { pose: 'pose-drone', label: 'Rico pilot drone', w: 126, h: 187, cx: 0.295 },
+  { pose: 'pose-wave', label: 'Rico melambai', w: 96, h: 183, cx: 0.375 },
+  { pose: 'pose-toga', label: 'Rico wisuda', w: 107, h: 192, cx: 0.534 },
+  { pose: 'pose-mic', label: 'Rico pembicara', w: 103, h: 184, cx: 0.359 },
+  { pose: 'pose-helmet', label: 'Rico teknisi', w: 102, h: 190, cx: 0.433 },
+  { pose: 'pose-laptop', label: 'Rico programmer', w: 90, h: 187, cx: 0.407 },
+  { pose: 'pose-idea', label: 'Rico punya ide', w: 112, h: 190, cx: 0.372 },
+  { pose: 'pose-yeay', label: 'Rico bersorak', w: 120, h: 184, cx: 0.494 },
 ];
