@@ -141,7 +141,7 @@ export const projects = [
     desc: 'Web & aplikasi untuk memantau 20+ sensor greenhouse secara real-time: suhu, kelembapan, irigasi, dan fertigasi.',
     tags: ['Web', 'Android', 'IoT'], tagBg: C.green, screen: '#E4F7E8',
     art: art.projGreenhouse, label: 'Ilustrasi dashboard IoT greenhouse',
-    link: '', cta: '', tilt: 'tilt-l',
+    link: 'https://gh-fp.isi-net.org/', cta: 'Kunjungi gh-fp.isi-net.org', tilt: 'tilt-l',
   },
   {
     title: 'Web Deteksi Sawit',
